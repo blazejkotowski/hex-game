@@ -30,7 +30,7 @@
   </target>
 
   <target name="run" depends="jar">
-    <java classname="${main-class}" fork="true">
+    <java classname="${main-class}" fork="false">
       <classpath>
         <path refid="classpath"/>
         <path refid="application"/>
