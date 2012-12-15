@@ -14,6 +14,10 @@ public class Board {
     return size;
   }
 
+  public Boolean canPlacePiece(int xCoordinate, int yCoordinate) {
+    return(xCoordinate > 0 && yCoordinate > 0 && xCoordinate < size*2 && yCoordinate > xCoordinate - size && yCoordinate < xCoordinate + 1 && yCoordinate < size + 1);
+  }
+
   public String toString() {
     String result = "";
     int maxRows = size * 4 + 1;
