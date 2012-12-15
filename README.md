@@ -18,7 +18,7 @@ ant
 
 Just to compile:
 ```
-ant build
+ant compile
 ```
 
 ## test suite
