@@ -25,3 +25,4 @@ ant build
 
 * Tomasz Pewiński
 * Michal Żelazkiewicz
+* Michal Mazurek
