@@ -6,7 +6,7 @@ public class BoardTest {
   @Test
   public void testBoardConstructor() {
     Board board = new Board(4);
-    assertTrue(board.getSize() == 4);
+    assertEquals(board.getSize(), 4);
   }
 
   @Test(expected=RuntimeException.class)
