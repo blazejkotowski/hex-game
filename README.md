@@ -21,6 +21,16 @@ Just to compile:
 ant build
 ```
 
+## test suite
+
+Use jUnit (https://github.com/kentbeck/junit/wiki):
+
+Write tests in `test/`. To run use:
+
+```
+ant test
+```
+
 ## authors
 
 * Tomasz Pewiński
