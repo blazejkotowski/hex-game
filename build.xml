@@ -3,7 +3,13 @@
   <property name="build.dir"   value="build"/>
   <property name="classes.dir" value="${build.dir}/classes"/>
   <property name="jar.dir"     value="${build.dir}/jar"/>
+  <property name="test.dir"    value="test"/>
   <property name="main-class"  value="org.hexgame.Main"/>
+  <property name="lib.dir"     value="lib"/>
+  <path id="classpath">
+    <fileset dir="${lib.dir}" includes="**/*.jar"/>
+  </path>
+  <path id="application" location="${jar.dir}/${ant.project.name}.jar"/>
 
   <target name="clean">
     <delete dir="${build.dir}"/>
@@ -11,7 +17,7 @@
 
   <target name="compile">
     <mkdir dir="${classes.dir}"/>
-    <javac srcdir="${src.dir}" destdir="${classes.dir}" includeantruntime="false"/>
+    <javac srcdir="${src.dir}" destdir="${classes.dir}" includeantruntime="false" classpathref="classpath"/>
   </target>
 
   <target name="jar" depends="compile">
@@ -24,10 +30,35 @@
   </target>
 
   <target name="run" depends="jar">
-    <java jar="${jar.dir}/${ant.project.name}.jar" fork="true"/>
+    <java classname="${main-class}" fork="true">
+      <classpath>
+        <path refid="classpath"/>
+        <path refid="application"/>
+      </classpath>
+    </java>
   </target>
 
   <target name="clean-build" depends="clean,jar"/>
+
+  <target name="compiletest" depends="compile">
+    <mkdir dir="${classes.dir}"/>
+    <javac srcdir="${test.dir}" destdir="${classes.dir}" includeantruntime="false" classpathref="classpath"/>
+  </target>
+
+  <target name="test" depends="compiletest,jar">
+    <junit printsummary="withOutAndErr" failureproperty="test.failed">
+      <formatter type="plain" usefile="false" />
+      <classpath>
+        <path refid="application"/>
+        <path refid="classpath"/>
+      </classpath>
+
+      <batchtest fork="yes">
+        <fileset dir="${test.dir}" includes="*Test.java"/>
+      </batchtest>
+    </junit>
+    <fail if="test.failed"/>
+  </target>
 
   <target name="main" depends="clean,run"/>
 </project>
