@@ -14,6 +14,10 @@ public class Board {
     return size;
   }
 
+  public String toString() {
+    return "I am a board.";
+  }
+
   private int minSize() {
     return 4;
   }
