@@ -11,7 +11,14 @@ public class Main {
     Console console = System.console();
     while(true) {
       System.out.println(board.toString());
-      String name = console.readLine((white ? "WHITE" : "BLACK") + ", what is your move?\n");
+      Boolean validMove = false;
+      while(!validMove) {
+        String name = console.readLine((white ? "WHITE" : "BLACK") + ", what is your move?\n");
+        validMove = name.matches("\\d+ \\d+");
+        if(!validMove) {
+          System.out.println("Invalid move!\n");
+        }
+      }
       white = !white;
     }
   }
