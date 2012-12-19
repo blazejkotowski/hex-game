@@ -63,6 +63,13 @@ public class BoardTest {
   }
 
   @Test
+  public void testCannotPlacePieceOnOccupiedField() {
+    Board board = new Board(4);
+    board.placePiece(1, 1, true);
+    assertFalse(board.canPlacePiece(1, 1));
+  }
+
+  @Test
   public void testPlacePiece() {
     Board board = new Board(4);
     board.placePiece(1, 1, true);

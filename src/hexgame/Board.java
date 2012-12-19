@@ -9,8 +9,12 @@ public class Board {
       throw new RuntimeException(String.format("%d is minimum Board size", minSize()));
     }
     size = _size;
-    pieces = new Boolean[size][];
-    for(int i = 0; i < size; i++) pieces[i] = new Boolean[size];
+    int doubleSize = size * 2;
+    pieces = new Boolean[doubleSize][];
+    for(int i = 0; i < doubleSize; i++) {
+      pieces[i] = new Boolean[doubleSize];
+      for(int l = 0; l < doubleSize; l++) pieces[i][l] = false;
+    }
   }
 
   public int getSize() {
@@ -21,10 +25,11 @@ public class Board {
     if(!canPlacePiece(xCoordinate, yCoordinate)) {
       throw new RuntimeException(String.format("piece cannot be placed at %d:%d", xCoordinate, yCoordinate));
     }
+    pieces[xCoordinate-1][yCoordinate-1] = true;
   }
 
   public Boolean canPlacePiece(int xCoordinate, int yCoordinate) {
-    return(xCoordinate > 0 && yCoordinate > 0 && xCoordinate < size*2 && yCoordinate > xCoordinate - size && yCoordinate < xCoordinate + 1 && yCoordinate < size + 1);
+    return fieldOnBoard(xCoordinate, yCoordinate) && fieldFree(xCoordinate, yCoordinate);
   }
 
   public String toString() {
@@ -68,6 +73,14 @@ public class Board {
 
   private int minSize() {
     return 4;
+  }
+
+  private Boolean fieldOnBoard(int xCoordinate, int yCoordinate) {
+    return(xCoordinate > 0 && yCoordinate > 0 && xCoordinate < size*2 && yCoordinate > xCoordinate - size && yCoordinate < xCoordinate + 1 && yCoordinate < size + 1);
+  }
+
+  private Boolean fieldFree(int xCoordinate, int yCoordinate) {
+    return !pieces[xCoordinate-1][yCoordinate-1];
   }
 }
 
