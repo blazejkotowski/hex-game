@@ -8,13 +8,13 @@ public class Main {
   public static void main(String[] args) {
     System.out.println("WELCOME TO HEX\n");
     Board board = new Board(10);
-    Boolean white = true;
+    PieceType pieceType = PieceType.WHITE;
     Console console = System.console();
     while(true) {
       System.out.println(board.toString());
       Boolean validMove = false;
       while(!validMove) {
-        String name = console.readLine((white ? "WHITE" : "BLACK") + ", what is your move?\n");
+        String name = console.readLine(pieceType.toString() + ", what is your move?\n");
         Matcher matcher = Pattern.compile("(\\d+) (\\d+)").matcher(name);
         if(matcher.find()) {
           int coordinateX = Integer.parseInt(matcher.group(1));
@@ -25,7 +25,7 @@ public class Main {
           System.out.println("Invalid move!\n");
         }
       }
-      white = !white;
+      pieceType = pieceType.invert();
     }
   }
 }
