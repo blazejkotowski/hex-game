@@ -1,6 +1,7 @@
 import org.junit.*;
 import static org.junit.Assert.*;
 import org.hexgame.Board;
+import org.hexgame.PieceType;
 
 public class BoardTest {
   @Test
@@ -65,19 +66,26 @@ public class BoardTest {
   @Test
   public void testCannotPlacePieceOnOccupiedField() {
     Board board = new Board(4);
-    board.placePiece(1, 1, true);
+    board.placePiece(1, 1, PieceType.WHITE);
+    assertFalse(board.canPlacePiece(1, 1));
+  }
+
+  @Test
+  public void testCannotPlacePieceOnOccupiedField2() {
+    Board board = new Board(4);
+    board.placePiece(1, 1, PieceType.BLACK);
     assertFalse(board.canPlacePiece(1, 1));
   }
 
   @Test
   public void testPlacePiece() {
     Board board = new Board(4);
-    board.placePiece(1, 1, true);
+    board.placePiece(1, 1, PieceType.WHITE);
   }
 
   @Test(expected=RuntimeException.class)
   public void testPlacePieceOutOfBoard() {
     Board board = new Board(4);
-    board.placePiece(1, 3, true);
+    board.placePiece(1, 3, PieceType.WHITE);
   }
 }

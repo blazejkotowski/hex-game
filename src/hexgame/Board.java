@@ -2,7 +2,7 @@ package org.hexgame;
 
 public class Board {
   private int size;
-  private Boolean[][] pieces;
+  private PieceType[][] pieces;
 
   public Board(int _size) {
     if(_size < minSize()) {
@@ -10,10 +10,9 @@ public class Board {
     }
     size = _size;
     int doubleSize = size * 2;
-    pieces = new Boolean[doubleSize][];
+    pieces = new PieceType[doubleSize][];
     for(int i = 0; i < doubleSize; i++) {
-      pieces[i] = new Boolean[doubleSize];
-      for(int l = 0; l < doubleSize; l++) pieces[i][l] = false;
+      pieces[i] = new PieceType[doubleSize];
     }
   }
 
@@ -21,11 +20,11 @@ public class Board {
     return size;
   }
 
-  public void placePiece(int xCoordinate, int yCoordinate, Boolean player) {
+  public void placePiece(int xCoordinate, int yCoordinate, PieceType piece) {
     if(!canPlacePiece(xCoordinate, yCoordinate)) {
       throw new RuntimeException(String.format("piece cannot be placed at %d:%d", xCoordinate, yCoordinate));
     }
-    pieces[xCoordinate-1][yCoordinate-1] = true;
+    pieces[xCoordinate-1][yCoordinate-1] = piece;
   }
 
   public Boolean canPlacePiece(int xCoordinate, int yCoordinate) {
@@ -80,7 +79,8 @@ public class Board {
   }
 
   private Boolean fieldFree(int xCoordinate, int yCoordinate) {
-    return !pieces[xCoordinate-1][yCoordinate-1];
+    PieceType pieceType = pieces[xCoordinate-1][yCoordinate-1];
+    return pieceType != PieceType.WHITE && pieceType != PieceType.BLACK;
   }
 }
 
