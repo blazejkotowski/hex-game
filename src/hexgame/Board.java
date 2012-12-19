@@ -1,13 +1,16 @@
 package org.hexgame;
 
 public class Board {
-  int size;
+  private int size;
+  private Boolean[][] pieces;
 
   public Board(int _size) {
     if(_size < minSize()) {
       throw new RuntimeException(String.format("%d is minimum Board size", minSize()));
     }
     size = _size;
+    pieces = new Boolean[size][];
+    for(int i = 0; i < size; i++) pieces[i] = new Boolean[size];
   }
 
   public int getSize() {
