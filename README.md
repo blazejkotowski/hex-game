@@ -63,4 +63,4 @@ ant test
 
 * Tomasz Pewiński
 * Michal Żelazkiewicz
-* Michal Mazurek
+* Michał Mazurek
