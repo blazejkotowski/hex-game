@@ -14,6 +14,12 @@ public class Board {
     return size;
   }
 
+  public void placePiece(int xCoordinate, int yCoordinate, Boolean player) {
+    if(!canPlacePiece(xCoordinate, yCoordinate)) {
+      throw new RuntimeException(String.format("piece cannot be placed at %d:%d", xCoordinate, yCoordinate));
+    }
+  }
+
   public Boolean canPlacePiece(int xCoordinate, int yCoordinate) {
     return(xCoordinate > 0 && yCoordinate > 0 && xCoordinate < size*2 && yCoordinate > xCoordinate - size && yCoordinate < xCoordinate + 1 && yCoordinate < size + 1);
   }

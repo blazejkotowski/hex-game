@@ -61,4 +61,16 @@ public class BoardTest {
     Board board = new Board(4);
     assertFalse(board.canPlacePiece(8, 4));
   }
+
+  @Test
+  public void testPlacePiece() {
+    Board board = new Board(4);
+    board.placePiece(1, 1, true);
+  }
+
+  @Test(expected=RuntimeException.class)
+  public void testPlacePieceOutOfBoard() {
+    Board board = new Board(4);
+    board.placePiece(1, 3, true);
+  }
 }
