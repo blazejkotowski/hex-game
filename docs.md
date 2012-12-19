@@ -21,3 +21,5 @@ Classes:
  - coordinateX
  - coordinateY
  - pieceType
+
+
