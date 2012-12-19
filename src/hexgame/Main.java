@@ -2,7 +2,7 @@ package org.hexgame;
 
 import java.io.Console;
 import java.util.regex.*;
-import org.hexgame.*;
+import org.hexgame.core.*;
 
 public class Main {
   public static void main(String[] args) {

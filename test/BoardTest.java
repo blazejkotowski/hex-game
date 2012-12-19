@@ -1,7 +1,7 @@
 import org.junit.*;
 import static org.junit.Assert.*;
-import org.hexgame.Board;
-import org.hexgame.PieceType;
+import org.hexgame.core.Board;
+import org.hexgame.core.PieceType;
 
 public class BoardTest {
   @Test

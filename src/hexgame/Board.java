@@ -1,4 +1,4 @@
-package org.hexgame;
+package org.hexgame.core;
 
 public class Board {
   private int size;
