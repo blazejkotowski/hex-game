@@ -18,4 +18,26 @@ public class MoveTest {
     Move move = new Move(new Board(4), PieceType.BLACK, 3, 2);
     assertEquals(move.getPieceType(), PieceType.BLACK);
   }
+
+  @Test
+  public void testValidMove() {
+    Board board = new Board(4);
+    Move move = new Move(board, PieceType.WHITE, 1, 1);
+    assertTrue(move.isValid());
+  }
+
+  @Test
+  public void testInvalidMoveIfFieldIsOccupied() {
+    Board board = new Board(4);
+    board.placePiece(1, 1, PieceType.BLACK);
+    Move move = new Move(board, PieceType.WHITE, 1, 1);
+    assertFalse(move.isValid());
+  }
+
+  @Test
+  public void testInvalidMoveIfFieldIsOutOfBounds() {
+    Board board = new Board(4);
+    Move move = new Move(board, PieceType.WHITE, 6, 1);
+    assertFalse(move.isValid());
+  }
 }

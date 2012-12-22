@@ -20,6 +20,6 @@ public class Move {
   }
 
   public Boolean isValid() {
-    return true;
+    return board.canPlacePiece(coordinateX, coordinateY);
   }
 }
