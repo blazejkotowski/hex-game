@@ -13,7 +13,7 @@ public class GameTest {
   @Before
   public void setUp() {
     playerA = new Player(PieceType.WHITE);
-    playerB = new Player(PieceType.WHITE);
+    playerB = new Player(PieceType.BLACK);
     game = new Game(10, playerA, playerB);
   }
 
@@ -46,5 +46,21 @@ public class GameTest {
     game.performMove(new Move(game.getBoard(), playerA, 1, 1));
     game.performMove(new Move(game.getBoard(), playerB, 2, 1));
     assertEquals(game.currentPlayer(), playerA);
+  }
+
+  @Test
+  public void testUndoMove() {
+    game.performMove(new Move(game.getBoard(), playerA, 1, 1));
+    game.performMove(new Move(game.getBoard(), playerB, 2, 1));
+    game.performMove(new Move(game.getBoard(), playerA, 2, 2));
+    game.undoMove();
+    assertEquals(game.getBoard().getPiece(1, 1), PieceType.WHITE);
+    assertEquals(game.getBoard().getPiece(2, 1), PieceType.BLACK);
+    assertEquals(game.getBoard().getPiece(2, 2), null);
+  }
+
+  @Test(expected = RuntimeException.class)
+  public void testUndoMoveWhenNoMoves() {
+    game.undoMove();
   }
 }

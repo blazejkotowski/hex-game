@@ -90,6 +90,20 @@ public class BoardTest {
   }
 
   @Test
+  public void testRemovePiece() {
+    Board board = new Board(4);
+    board.placePiece(1, 1, PieceType.WHITE);
+    board.removePiece(1, 1);
+    assertEquals(board.getPiece(1, 1), null);
+  }
+
+  @Test(expected=RuntimeException.class)
+  public void testRemovePieceOutOfBoard() {
+    Board board = new Board(4);
+    board.removePiece(1, 3);
+  }
+
+  @Test
   public void testGetPieces() {
     Board board = new Board(4);
     board.placePiece(1, 1, PieceType.WHITE);

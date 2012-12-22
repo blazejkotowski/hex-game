@@ -27,4 +27,8 @@ public class Move {
     if(!isValid()) throw new RuntimeException("Invalid move");
     board.placePiece(xCoordinate, yCoordinate, player.getPieceType());
   }
+
+  public void undo() {
+    board.removePiece(xCoordinate, yCoordinate);
+  }
 }

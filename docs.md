@@ -5,7 +5,7 @@ Classes:
  - isFinished(): Boolean
  - getWinner(): Player
  - performMove(Move): void
- - backMove(): void
+ - undoMove(): void
  - getBoard(): Board
  - currentPlayer(): Player
 * Board

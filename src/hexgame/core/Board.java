@@ -34,6 +34,13 @@ public class Board {
     pieces[xCoordinate-1][yCoordinate-1] = piece;
   }
 
+  public void removePiece(int xCoordinate, int yCoordinate) {
+    if(!fieldOnBoard(xCoordinate, yCoordinate)) {
+      throw new RuntimeException(String.format("invalid coordinates: %d:%d", xCoordinate, yCoordinate));
+    }
+    pieces[xCoordinate-1][yCoordinate-1] = null;
+  }
+
   public Boolean canPlacePiece(int xCoordinate, int yCoordinate) {
     return fieldOnBoard(xCoordinate, yCoordinate) && fieldFree(xCoordinate, yCoordinate);
   }

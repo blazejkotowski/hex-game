@@ -47,5 +47,8 @@ public class Game {
     moves.add(move);
   }
 
-  public void backMove() { }
+  public void undoMove() {
+    if(moves.isEmpty()) throw new RuntimeException("No moves");
+    moves.get(moves.size() - 1).undo();
+  }
 }
