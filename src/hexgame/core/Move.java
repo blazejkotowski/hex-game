@@ -15,4 +15,8 @@ public class Move {
   public PieceType getPieceType() {
     return pieceType;
   }
+
+  public Boolean isValid() {
+    return true;
+  }
 }

@@ -19,5 +19,5 @@ Classes:
 * Move
  - coordinateX
  - coordinateY
- - pieceType
+ - getPieceType(): PieceType
  - isValid(): Boolean
