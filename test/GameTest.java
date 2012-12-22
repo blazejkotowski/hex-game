@@ -63,4 +63,14 @@ public class GameTest {
   public void testUndoMoveWhenNoMoves() {
     game.undoMove();
   }
+
+  @Test
+  public void testUndoAndCurrentPlayer() {
+    game.performMove(new Move(game.getBoard(), playerA, 1, 1));
+    game.performMove(new Move(game.getBoard(), playerB, 2, 1));
+    game.performMove(new Move(game.getBoard(), playerA, 2, 2));
+    game.undoMove();
+    assertEquals(game.currentPlayer(), playerA);
+  }
+
 }

@@ -48,7 +48,11 @@ public class Game {
   }
 
   public void undoMove() {
+    assertAnyMoves();
+    moves.remove(moves.size() - 1).undo();
+  }
+
+  private void assertAnyMoves() {
     if(moves.isEmpty()) throw new RuntimeException("No moves");
-    moves.get(moves.size() - 1).undo();
   }
 }
