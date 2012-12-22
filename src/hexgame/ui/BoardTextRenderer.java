@@ -1,5 +1,6 @@
 package org.hexgame.ui;
 
+import org.hexgame.core.PieceType;
 import org.hexgame.core.Board;
 
 public class BoardTextRenderer {
@@ -23,7 +24,24 @@ public class BoardTextRenderer {
             result += "|";
           }
           else {
-            result += " ";
+            if(column % 2 == 0) {
+              int xCoordinate = row / 2;
+              int yCoordinate = ((column + 3) / 4);
+              if(xCoordinate > size) { yCoordinate += xCoordinate - size; }
+              PieceType piece = board.getPiece(xCoordinate, yCoordinate);
+              if(piece == PieceType.WHITE) {
+                result += "□";
+              }
+              else if(piece == PieceType.BLACK) {
+                result += "■";
+              }
+              else {
+                result += " ";
+              }
+            }
+            else {
+              result += " ";
+            }
           }
         }
       }
