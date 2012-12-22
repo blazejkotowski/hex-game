@@ -1,15 +1,18 @@
 package org.hexgame.core;
 
+import java.util.ArrayList;
 import org.hexgame.core.Player;
 
 public class Game {
   Board  board;
   Player playerA, playerB;
+  ArrayList<Move> moves;
 
   public Game(int _size, Player _playerA, Player _playerB) {
     board = new Board(_size);
     playerA = _playerA;
     playerB = _playerB;
+    moves = new ArrayList<Move>();
   }
 
   public Board getBoard() {
@@ -38,6 +41,7 @@ public class Game {
 
   public void performMove(Move move) {
     move.perform();
+    moves.add(move);
   }
 
   public void backMove() { }
