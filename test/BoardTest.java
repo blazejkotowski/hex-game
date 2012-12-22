@@ -83,6 +83,12 @@ public class BoardTest {
     board.placePiece(1, 3, PieceType.WHITE);
   }
 
+  @Test(expected=RuntimeException.class)
+  public void testPlacePieceOnOccupiedField() {
+    board.placePiece(1, 1, PieceType.WHITE);
+    board.placePiece(1, 1, PieceType.BLACK);
+  }
+
   @Test
   public void testRemovePiece() {
     board.placePiece(1, 1, PieceType.WHITE);

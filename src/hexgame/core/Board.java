@@ -5,10 +5,8 @@ public class Board {
   private PieceType[][] pieces;
 
   public Board(int _size) {
-    if(_size < minSize()) {
-      throw new RuntimeException(String.format("%d is minimum Board size", minSize()));
-    }
     size = _size;
+    assertMinSize();
     int doubleSize = size * 2;
     pieces = new PieceType[doubleSize][];
     for(int i = 0; i < doubleSize; i++) {
@@ -21,28 +19,40 @@ public class Board {
   }
 
   public PieceType getPiece(int xCoordinate, int yCoordinate) {
-    if(!fieldOnBoard(xCoordinate, yCoordinate)) {
-      throw new RuntimeException(String.format("invalid coordinates: %d:%d", xCoordinate, yCoordinate));
-    }
+    assertCoordinates(xCoordinate, yCoordinate);
     return pieces[xCoordinate-1][yCoordinate-1];
   }
 
   public void placePiece(int xCoordinate, int yCoordinate, PieceType piece) {
-    if(!canPlacePiece(xCoordinate, yCoordinate)) {
-      throw new RuntimeException(String.format("piece cannot be placed at %d:%d", xCoordinate, yCoordinate));
-    }
+    assertCanPlacePiece(xCoordinate, yCoordinate);
     pieces[xCoordinate-1][yCoordinate-1] = piece;
   }
 
   public void removePiece(int xCoordinate, int yCoordinate) {
-    if(!fieldOnBoard(xCoordinate, yCoordinate)) {
-      throw new RuntimeException(String.format("invalid coordinates: %d:%d", xCoordinate, yCoordinate));
-    }
+    assertCoordinates(xCoordinate, yCoordinate);
     pieces[xCoordinate-1][yCoordinate-1] = null;
   }
 
   public Boolean canPlacePiece(int xCoordinate, int yCoordinate) {
     return fieldOnBoard(xCoordinate, yCoordinate) && fieldFree(xCoordinate, yCoordinate);
+  }
+
+  private void assertCanPlacePiece(int xCoordinate, int yCoordinate) {
+    assertCoordinates(xCoordinate, yCoordinate);
+    if(!canPlacePiece(xCoordinate, yCoordinate)) {
+      throw new RuntimeException(String.format("cannot place piece on %d:%d", xCoordinate, yCoordinate));
+    }
+  }
+
+  private void assertCoordinates(int xCoordinate, int yCoordinate) {
+    if(!fieldOnBoard(xCoordinate, yCoordinate)) {
+      throw new RuntimeException(String.format("invalid coordinates: %d:%d", xCoordinate, yCoordinate));
+    }
+  }
+
+  private void assertMinSize() {
+    if(size < minSize())
+      throw new RuntimeException(String.format("%d is minimum Board size", minSize()));
   }
 
   private int minSize() {
