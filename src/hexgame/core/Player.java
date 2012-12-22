@@ -12,4 +12,8 @@ public class Player {
   public PieceType getPieceType() {
     return pieceType;
   }
+
+  public boolean isHuman() {
+    return true;
+  }
 }
