@@ -24,23 +24,25 @@ public class TextGameController {
     Console console = System.console();
     while(true) {
       System.out.println(renderer.toString());
-      Boolean validMove = false;
-      while(!validMove) {
+      while(true) {
         String name = console.readLine(pieceType.toString() + ", what is your move?\n");
         Matcher matcher = Pattern.compile("(\\d+) (\\d+)").matcher(name);
-        int coordinateX;
-        int coordinateY;
+        int coordinateX = -1;
+        int coordinateY = -1;
         if(matcher.find()) {
           coordinateX = Integer.parseInt(matcher.group(1));
           coordinateY = Integer.parseInt(matcher.group(2));
-          validMove = board.canPlacePiece(coordinateX, coordinateY);
-          if(validMove) {
-            board.placePiece(coordinateX, coordinateY, pieceType);
-          }
         }
-        if(!validMove) System.out.println("Invalid move!\n");
+        Move move = new Move(board, pieceType, coordinateX, coordinateY);
+        if(move.isValid()) {
+          board.placePiece(coordinateX, coordinateY, pieceType);
+          pieceType = pieceType.invert();
+          break;
+        }
+        else {
+          System.out.println("Invalid move!\n");
+        }
       }
-      pieceType = pieceType.invert();
     }
   }
 }
