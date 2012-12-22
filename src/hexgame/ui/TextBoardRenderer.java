@@ -3,10 +3,10 @@ package org.hexgame.ui;
 import org.hexgame.core.PieceType;
 import org.hexgame.core.Board;
 
-public class BoardTextRenderer {
+public class TextBoardRenderer {
   private Board board;
 
-  public BoardTextRenderer(Board _board) { board = _board; }
+  public TextBoardRenderer(Board _board) { board = _board; }
 
   public String toString() {
     String result = "";

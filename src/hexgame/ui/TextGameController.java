@@ -3,12 +3,12 @@ package org.hexgame.ui;
 import java.io.Console;
 import java.util.regex.*;
 import org.hexgame.core.*;
-import org.hexgame.ui.BoardTextRenderer;
+import org.hexgame.ui.TextBoardRenderer;
 
 public class TextGameController {
   Game game;
   Board board;
-  BoardTextRenderer renderer;
+  TextBoardRenderer renderer;
   Player currentPlayer;
 
   public TextGameController(int size) {
@@ -16,7 +16,7 @@ public class TextGameController {
     Player playerB = new Player(PieceType.BLACK);
     game = new Game(size, playerA, playerB);
     board = game.getBoard();
-    renderer = new BoardTextRenderer(board);
+    renderer = new TextBoardRenderer(board);
   }
 
   public void start() {
