@@ -22,4 +22,9 @@ public class Move {
   public Boolean isValid() {
     return board.canPlacePiece(xCoordinate, yCoordinate);
   }
+
+  public void perform() {
+    if(!isValid()) throw new RuntimeException("Invalid move");
+    board.placePiece(xCoordinate, yCoordinate, pieceType);
+  }
 }

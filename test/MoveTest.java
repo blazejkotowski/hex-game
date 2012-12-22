@@ -40,4 +40,19 @@ public class MoveTest {
     Move move = new Move(board, PieceType.WHITE, 6, 1);
     assertFalse(move.isValid());
   }
+
+  @Test
+  public void testPerformValidMove() {
+    Board board = new Board(4);
+    Move move = new Move(board, PieceType.WHITE, 1, 1);
+    move.perform();
+    assertEquals(board.getPiece(1, 1), PieceType.WHITE);
+  }
+
+  @Test(expected=RuntimeException.class)
+  public void testPerformInvalidMove() {
+    Board board = new Board(4);
+    Move move = new Move(board, PieceType.WHITE, 1, 2);
+    move.perform();
+  }
 }
