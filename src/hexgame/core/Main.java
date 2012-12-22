@@ -2,16 +2,18 @@ package org.hexgame;
 
 import java.io.Console;
 import java.util.regex.*;
+import org.hexgame.ui.BoardTextRenderer;
 import org.hexgame.core.*;
 
 public class Main {
   public static void main(String[] args) {
     System.out.println("WELCOME TO HEX\n");
     Board board = new Board(10);
+    BoardTextRenderer renderer = new BoardTextRenderer(board);
     PieceType pieceType = PieceType.WHITE;
     Console console = System.console();
     while(true) {
-      System.out.println(board.toString());
+      System.out.println(renderer.toString());
       Boolean validMove = false;
       while(!validMove) {
         String name = console.readLine(pieceType.toString() + ", what is your move?\n");
