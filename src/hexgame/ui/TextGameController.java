@@ -7,16 +7,19 @@ import org.hexgame.ui.BoardTextRenderer;
 
 public class TextGameController {
   Game game;
+  Board board;
+  BoardTextRenderer renderer;
+
   public TextGameController(int size) {
     Player playerA = new Player(PieceType.WHITE);
     Player playerB = new Player(PieceType.BLACK);
     game = new Game(size, playerA, playerB);
+    board = game.getBoard();
+    renderer = new BoardTextRenderer(board);
   }
 
   public void start() {
     System.out.println("WELCOME TO HEX\n");
-    Board board = new Board(10);
-    BoardTextRenderer renderer = new BoardTextRenderer(board);
     PieceType pieceType = PieceType.WHITE;
     Console console = System.console();
     while(true) {
