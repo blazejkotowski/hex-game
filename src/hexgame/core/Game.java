@@ -36,7 +36,10 @@ public class Game {
   }
 
   public Player currentPlayer() {
-    return playerA;
+    if(moves.size() % 2 == 0)
+      return playerA;
+    else
+      return playerB;
   }
 
   public void performMove(Move move) {
