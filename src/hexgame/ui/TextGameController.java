@@ -35,7 +35,7 @@ public class TextGameController {
         }
         Move move = new Move(board, pieceType, xCoordinate, yCoordinate);
         if(move.isValid()) {
-          board.placePiece(xCoordinate, yCoordinate, pieceType);
+          game.performMove(move);
           pieceType = pieceType.invert();
           break;
         }
