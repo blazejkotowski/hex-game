@@ -5,7 +5,6 @@ Classes:
  - isFinished(): Boolean
  - getWinner(): Player
  - performMove(Move): void
- - isValidMove(Move): Boolean
  - backMove(): void
  - getBoard(): Board
  - currentPlayer(): Player
@@ -16,10 +15,9 @@ Classes:
 * Player
  - isHuman(): Boolean
  - getPieceType(): PieceType
- ** AIPlayer
+  - AIPlayer
 * Move
  - coordinateX
  - coordinateY
  - pieceType
-
-
+ - isValid(): Boolean
