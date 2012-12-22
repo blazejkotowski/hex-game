@@ -9,8 +9,8 @@ public class MoveTest {
   public void testInitializingWithWhitePiece() {
     Move move = new Move(new Board(4), PieceType.WHITE, 3, 2);
     assertEquals(move.getPieceType(), PieceType.WHITE);
-    assertEquals(move.coordinateX, 3);
-    assertEquals(move.coordinateY, 2);
+    assertEquals(move.xCoordinate, 3);
+    assertEquals(move.yCoordinate, 2);
   }
 
   @Test

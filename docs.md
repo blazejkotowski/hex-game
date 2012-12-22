@@ -9,7 +9,7 @@ Classes:
  - getBoard(): Board
  - currentPlayer(): Player
 * Board
- - getPiece(coordinateX, coordinateY): PieceType
+ - getPiece(xCoordinate, yCoordinate): PieceType
 * PieceType
  - invert()
 * Player

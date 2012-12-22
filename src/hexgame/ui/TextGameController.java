@@ -27,15 +27,15 @@ public class TextGameController {
       while(true) {
         String name = console.readLine(pieceType.toString() + ", what is your move?\n");
         Matcher matcher = Pattern.compile("(\\d+) (\\d+)").matcher(name);
-        int coordinateX = -1;
-        int coordinateY = -1;
+        int xCoordinate = -1;
+        int yCoordinate = -1;
         if(matcher.find()) {
-          coordinateX = Integer.parseInt(matcher.group(1));
-          coordinateY = Integer.parseInt(matcher.group(2));
+          xCoordinate = Integer.parseInt(matcher.group(1));
+          yCoordinate = Integer.parseInt(matcher.group(2));
         }
-        Move move = new Move(board, pieceType, coordinateX, coordinateY);
+        Move move = new Move(board, pieceType, xCoordinate, yCoordinate);
         if(move.isValid()) {
-          board.placePiece(coordinateX, coordinateY, pieceType);
+          board.placePiece(xCoordinate, yCoordinate, pieceType);
           pieceType = pieceType.invert();
           break;
         }

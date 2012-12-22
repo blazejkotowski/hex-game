@@ -6,13 +6,13 @@ import org.hexgame.core.PieceType;
 public class Move {
   PieceType pieceType;
   Board board;
-  public int coordinateX, coordinateY;
+  public int xCoordinate, yCoordinate;
 
-  public Move(Board _board, PieceType _pieceType, int _coordinateX, int _coordinateY) {
+  public Move(Board _board, PieceType _pieceType, int _xCoordinate, int _yCoordinate) {
     board = _board;
     pieceType = _pieceType;
-    coordinateX = _coordinateX;
-    coordinateY = _coordinateY;
+    xCoordinate = _xCoordinate;
+    yCoordinate = _yCoordinate;
   }
 
   public PieceType getPieceType() {
@@ -20,6 +20,6 @@ public class Move {
   }
 
   public Boolean isValid() {
-    return board.canPlacePiece(coordinateX, coordinateY);
+    return board.canPlacePiece(xCoordinate, yCoordinate);
   }
 }
