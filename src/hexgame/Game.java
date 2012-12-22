@@ -23,4 +23,20 @@ public class Game {
   public Player getPlayerB() {
     return playerB;
   }
+
+  public Boolean isFinished() {
+    return false;
+  }
+
+  public Player getWinner() {
+    return playerA;
+  }
+
+  public Player currentPlayer() {
+    return playerA;
+  }
+
+  public void performMove(Move move) { }
+
+  public void backMove() { }
 }
