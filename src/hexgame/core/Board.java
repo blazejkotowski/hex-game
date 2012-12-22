@@ -20,6 +20,10 @@ public class Board {
     return size;
   }
 
+  public PieceType getPiece(int coordinateX, int coordinateY) {
+    return PieceType.WHITE;
+  }
+
   public void placePiece(int xCoordinate, int yCoordinate, PieceType piece) {
     if(!canPlacePiece(xCoordinate, yCoordinate)) {
       throw new RuntimeException(String.format("piece cannot be placed at %d:%d", xCoordinate, yCoordinate));
