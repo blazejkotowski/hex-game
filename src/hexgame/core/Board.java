@@ -1,17 +1,17 @@
 package org.hexgame.core;
 
+import java.util.Arrays;
+import java.util.List;
+import java.util.HashMap;
+
 public class Board {
   private int size;
-  private PieceType[][] pieces;
+  private HashMap<List<Integer>, PieceType> pieces;
 
   public Board(int _size) {
     size = _size;
     assertMinSize();
-    int doubleSize = size * 2;
-    pieces = new PieceType[doubleSize][];
-    for(int i = 0; i < doubleSize; i++) {
-      pieces[i] = new PieceType[doubleSize];
-    }
+    pieces = new HashMap<List<Integer>, PieceType>();
   }
 
   public int getSize() {
@@ -20,17 +20,17 @@ public class Board {
 
   public PieceType getPiece(int xCoordinate, int yCoordinate) {
     assertCoordinates(xCoordinate, yCoordinate);
-    return pieces[xCoordinate-1][yCoordinate-1];
+    return pieces.get(Arrays.asList(xCoordinate, yCoordinate));
   }
 
   public void placePiece(int xCoordinate, int yCoordinate, PieceType piece) {
     assertCanPlacePiece(xCoordinate, yCoordinate);
-    pieces[xCoordinate-1][yCoordinate-1] = piece;
+    pieces.put(Arrays.asList(xCoordinate, yCoordinate), piece);
   }
 
   public void removePiece(int xCoordinate, int yCoordinate) {
     assertCoordinates(xCoordinate, yCoordinate);
-    pieces[xCoordinate-1][yCoordinate-1] = null;
+    pieces.put(Arrays.asList(xCoordinate, yCoordinate), null);
   }
 
   public Boolean canPlacePiece(int xCoordinate, int yCoordinate) {
@@ -64,8 +64,7 @@ public class Board {
   }
 
   private Boolean fieldFree(int xCoordinate, int yCoordinate) {
-    PieceType pieceType = pieces[xCoordinate-1][yCoordinate-1];
-    return pieceType != PieceType.WHITE && pieceType != PieceType.BLACK;
+    return getPiece(xCoordinate, yCoordinate) == null;
   }
 }
 
