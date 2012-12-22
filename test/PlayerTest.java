@@ -7,12 +7,12 @@ public class PlayerTest {
   @Test
   public void testInitializingWithWhitePiece() {
     Player player = new Player(PieceType.WHITE);
-    assertEquals(player.pieceType, PieceType.WHITE);
+    assertEquals(player.getPieceType(), PieceType.WHITE);
   }
 
   @Test
   public void testInitializingWithBlackPiece() {
     Player player = new Player(PieceType.BLACK);
-    assertEquals(player.pieceType, PieceType.BLACK);
+    assertEquals(player.getPieceType(), PieceType.BLACK);
   }
 }
