@@ -3,6 +3,7 @@ import static org.junit.Assert.*;
 
 import org.hexgame.core.PieceType;
 import org.hexgame.core.Player;
+import org.hexgame.core.Move;
 import org.hexgame.core.Game;
 
 public class GameTest {
@@ -14,5 +15,15 @@ public class GameTest {
     assertEquals(game.getBoard().getSize(), 10);
     assertEquals(game.getPlayerA(), playerA);
     assertEquals(game.getPlayerB(), playerB);
+  }
+
+  @Test
+  public void testPerformingMove() {
+    Player playerA = new Player(PieceType.WHITE);
+    Player playerB = new Player(PieceType.WHITE);
+    Game game = new Game(10, playerA, playerB);
+    Move move = new Move(game.getBoard(), PieceType.WHITE, 1, 1);
+    game.performMove(move);
+    assertEquals(game.getBoard().getPiece(1, 1), PieceType.WHITE);
   }
 }

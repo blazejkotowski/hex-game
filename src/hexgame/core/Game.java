@@ -36,7 +36,9 @@ public class Game {
     return playerA;
   }
 
-  public void performMove(Move move) { }
+  public void performMove(Move move) {
+    move.perform();
+  }
 
   public void backMove() { }
 }
