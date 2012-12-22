@@ -88,4 +88,22 @@ public class BoardTest {
     Board board = new Board(4);
     board.placePiece(1, 3, PieceType.WHITE);
   }
+
+  @Test
+  public void testGetPieces() {
+    Board board = new Board(4);
+    board.placePiece(1, 1, PieceType.WHITE);
+    board.placePiece(2, 1, PieceType.BLACK);
+
+    assertEquals(board.getPiece(1, 1), PieceType.WHITE);
+    assertEquals(board.getPiece(2, 1), PieceType.BLACK);
+    assertEquals(board.getPiece(2, 2), null);
+  }
+
+  @Test(expected=RuntimeException.class)
+  public void testgetPieceOutOfBoard() {
+    Board board = new Board(4);
+    board.getPiece(1, 3);
+  }
+
 }

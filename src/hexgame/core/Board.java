@@ -20,8 +20,11 @@ public class Board {
     return size;
   }
 
-  public PieceType getPiece(int coordinateX, int coordinateY) {
-    return PieceType.WHITE;
+  public PieceType getPiece(int xCoordinate, int yCoordinate) {
+    if(!fieldOnBoard(xCoordinate, yCoordinate)) {
+      throw new RuntimeException(String.format("invalid coordinates: %d:%d", xCoordinate, yCoordinate));
+    }
+    return pieces[xCoordinate-1][yCoordinate-1];
   }
 
   public void placePiece(int xCoordinate, int yCoordinate, PieceType piece) {
