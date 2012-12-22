@@ -26,8 +26,7 @@ public class GameTest {
 
   @Test
   public void testPerformingMove() {
-    Move move = new Move(game.getBoard(), PieceType.WHITE, 1, 1);
-    game.performMove(move);
+    game.performMove(new Move(game.getBoard(), playerA, 1, 1));
     assertEquals(game.getBoard().getPiece(1, 1), PieceType.WHITE);
   }
 
@@ -38,14 +37,14 @@ public class GameTest {
 
   @Test
   public void testCurrentPlayerAfterOneMove() {
-    game.performMove(new Move(game.getBoard(), PieceType.WHITE, 1, 1));
+    game.performMove(new Move(game.getBoard(), playerA, 1, 1));
     assertEquals(game.currentPlayer(), playerB);
   }
 
   @Test
   public void testCurrentPlayerAfterSeveralMoves() {
-    game.performMove(new Move(game.getBoard(), PieceType.WHITE, 1, 1));
-    game.performMove(new Move(game.getBoard(), PieceType.BLACK, 2, 1));
+    game.performMove(new Move(game.getBoard(), playerA, 1, 1));
+    game.performMove(new Move(game.getBoard(), playerB, 2, 1));
     assertEquals(game.currentPlayer(), playerA);
   }
 }

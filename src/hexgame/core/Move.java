@@ -1,22 +1,22 @@
 package org.hexgame.core;
 
 import org.hexgame.core.Board;
-import org.hexgame.core.PieceType;
+import org.hexgame.core.Player;
 
 public class Move {
-  PieceType pieceType;
-  Board board;
+  Player player;
+  Board  board;
   public int xCoordinate, yCoordinate;
 
-  public Move(Board _board, PieceType _pieceType, int _xCoordinate, int _yCoordinate) {
+  public Move(Board _board, Player _player, int _xCoordinate, int _yCoordinate) {
     board = _board;
-    pieceType = _pieceType;
+    player = _player;
     xCoordinate = _xCoordinate;
     yCoordinate = _yCoordinate;
   }
 
-  public PieceType getPieceType() {
-    return pieceType;
+  public Player getPlayer() {
+    return player;
   }
 
   public Boolean isValid() {
@@ -25,6 +25,6 @@ public class Move {
 
   public void perform() {
     if(!isValid()) throw new RuntimeException("Invalid move");
-    board.placePiece(xCoordinate, yCoordinate, pieceType);
+    board.placePiece(xCoordinate, yCoordinate, player.getPieceType());
   }
 }

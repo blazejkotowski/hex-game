@@ -33,7 +33,7 @@ public class TextGameController {
           xCoordinate = Integer.parseInt(matcher.group(1));
           yCoordinate = Integer.parseInt(matcher.group(2));
         }
-        Move move = new Move(board, pieceType, xCoordinate, yCoordinate);
+        Move move = new Move(board, game.currentPlayer(), xCoordinate, yCoordinate);
         if(move.isValid()) {
           game.performMove(move);
           pieceType = pieceType.invert();
