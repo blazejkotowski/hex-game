@@ -13,6 +13,10 @@ public class Player {
     return pieceType;
   }
 
+  public String toString() {
+    return pieceType.toString();
+  }
+
   public boolean isHuman() {
     return true;
   }

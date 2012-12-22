@@ -9,6 +9,7 @@ public class TextGameController {
   Game game;
   Board board;
   BoardTextRenderer renderer;
+  Player currentPlayer;
 
   public TextGameController(int size) {
     Player playerA = new Player(PieceType.WHITE);
@@ -20,12 +21,12 @@ public class TextGameController {
 
   public void start() {
     System.out.println("WELCOME TO HEX\n");
-    PieceType pieceType = PieceType.WHITE;
     Console console = System.console();
     while(true) {
+      currentPlayer = game.currentPlayer();
       System.out.println(renderer.toString());
       while(true) {
-        String name = console.readLine(pieceType.toString() + ", what is your move?\n");
+        String name = console.readLine(currentPlayer.toString() + ", what is your move?\n");
         Matcher matcher = Pattern.compile("(\\d+) (\\d+)").matcher(name);
         int xCoordinate = -1;
         int yCoordinate = -1;
@@ -33,10 +34,9 @@ public class TextGameController {
           xCoordinate = Integer.parseInt(matcher.group(1));
           yCoordinate = Integer.parseInt(matcher.group(2));
         }
-        Move move = new Move(board, game.currentPlayer(), xCoordinate, yCoordinate);
+        Move move = new Move(board, currentPlayer, xCoordinate, yCoordinate);
         if(move.isValid()) {
           game.performMove(move);
-          pieceType = pieceType.invert();
           break;
         }
         else {
