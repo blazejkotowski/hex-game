@@ -17,7 +17,7 @@ public class Player {
     return pieceType.toString();
   }
 
-  public boolean isHuman() {
+  public Boolean isHuman() {
     return true;
   }
 }
