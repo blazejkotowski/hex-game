@@ -46,7 +46,7 @@
   </target>
 
   <target name="test" depends="compiletest,jar">
-    <junit printsummary="withOutAndErr" failureproperty="test.failed">
+    <junit failureproperty="test.failed">
       <formatter type="plain" usefile="false" />
       <classpath>
         <path refid="application"/>
