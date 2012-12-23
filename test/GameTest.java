@@ -14,12 +14,12 @@ public class GameTest {
   public void setUp() {
     playerA = new Player(PieceType.WHITE);
     playerB = new Player(PieceType.BLACK);
-    game = new Game(10, playerA, playerB);
+    game = new Game(4, playerA, playerB);
   }
 
   @Test
   public void testInitializing() {
-    assertEquals(game.getBoard().getSize(), 10);
+    assertEquals(game.getBoard().getSize(), 4);
     assertEquals(game.getPlayerA(), playerA);
     assertEquals(game.getPlayerB(), playerB);
   }
@@ -73,4 +73,29 @@ public class GameTest {
     assertEquals(game.currentPlayer(), playerA);
   }
 
+  @Test
+  public void testIsNotFinished() {
+    assertFalse(game.isFinished());
+  }
+
+  @Test
+  public void testIsFinishedWhenBoardIsFull() {
+    game.performMove(new Move(game.getBoard(), playerA, 1, 1));
+    game.performMove(new Move(game.getBoard(), playerB, 2, 1));
+    game.performMove(new Move(game.getBoard(), playerA, 2, 2));
+    game.performMove(new Move(game.getBoard(), playerB, 3, 1));
+    game.performMove(new Move(game.getBoard(), playerA, 3, 2));
+    game.performMove(new Move(game.getBoard(), playerB, 3, 3));
+    game.performMove(new Move(game.getBoard(), playerA, 4, 1));
+    game.performMove(new Move(game.getBoard(), playerB, 4, 2));
+    game.performMove(new Move(game.getBoard(), playerA, 4, 3));
+    game.performMove(new Move(game.getBoard(), playerB, 4, 4));
+    game.performMove(new Move(game.getBoard(), playerA, 5, 2));
+    game.performMove(new Move(game.getBoard(), playerB, 5, 3));
+    game.performMove(new Move(game.getBoard(), playerA, 5, 4));
+    game.performMove(new Move(game.getBoard(), playerB, 6, 3));
+    game.performMove(new Move(game.getBoard(), playerA, 6, 4));
+    game.performMove(new Move(game.getBoard(), playerB, 7, 4));
+    assertTrue(game.isFinished());
+  }
 }

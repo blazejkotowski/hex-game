@@ -28,7 +28,7 @@ public class Game {
   }
 
   public Boolean isFinished() {
-    return false;
+    return board.isFull();
   }
 
   public Player getWinner() {
