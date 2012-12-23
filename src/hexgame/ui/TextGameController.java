@@ -3,6 +3,7 @@ package org.hexgame.ui;
 import java.io.Console;
 import java.util.regex.*;
 import org.hexgame.core.*;
+import org.hexgame.core.strategies.RandomStrategy;
 import org.hexgame.ui.TextBoardRenderer;
 
 public class TextGameController {
@@ -14,7 +15,7 @@ public class TextGameController {
 
   public TextGameController() {
     Player playerA = new Player(PieceType.WHITE);
-    Player playerB = new Player(PieceType.BLACK);
+    Player playerB = new AIPlayer(PieceType.BLACK, new RandomStrategy());
     game = new Game(10, playerA, playerB);
     board = game.getBoard();
     renderer = new TextBoardRenderer(board);
@@ -50,7 +51,7 @@ public class TextGameController {
       else                      defaultAction();
     }
     else {
-      // AI action
+      game.performMove(currentPlayer.getMove(board));
     }
   }
 

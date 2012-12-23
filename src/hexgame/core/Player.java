@@ -20,4 +20,6 @@ public class Player {
   public Boolean isHuman() {
     return true;
   }
+
+  public Move getMove(Board board) { return null; }
 }

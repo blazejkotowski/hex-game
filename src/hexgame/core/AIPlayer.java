@@ -3,6 +3,7 @@ package org.hexgame.core;
 import java.util.List;
 import org.hexgame.core.Player;
 import org.hexgame.core.Move;
+import org.hexgame.core.Board;
 import org.hexgame.core.strategies.Strategy;
 
 public class AIPlayer extends Player {
@@ -13,9 +14,9 @@ public class AIPlayer extends Player {
     strategy = _strategy;
   }
 
-  public Move getMove() {
-    List<Integer> newMove = strategy.getMove();
-    return new Move(strategy.getBoard(), this, newMove.get(0), newMove.get(1));
+  public Move getMove(Board board) {
+    List<Integer> newMove = strategy.getMove(board, pieceType);
+    return new Move(board, this, newMove.get(0), newMove.get(1));
   }
 
   public Boolean isHuman() {
