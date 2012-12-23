@@ -1,7 +1,6 @@
 import org.junit.*;
 import java.util.Set;
 import java.util.HashSet;
-import java.util.Arrays;
 import static org.junit.Assert.*;
 import org.hexgame.core.Field;
 

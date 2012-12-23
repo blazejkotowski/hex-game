@@ -15,8 +15,8 @@ public class AIPlayer extends Player {
   }
 
   public Move getMove(Board board) {
-    List<Integer> newMove = strategy.getMove(board, pieceType);
-    return new Move(board, this, newMove.get(0), newMove.get(1));
+    Field newMove = strategy.getMove(board, pieceType);
+    return new Move(board, this, newMove.xCoordinate, newMove.yCoordinate);
   }
 
   public Boolean isHuman() {
