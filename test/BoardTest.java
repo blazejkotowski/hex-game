@@ -115,4 +115,31 @@ public class BoardTest {
   public void testgetPieceOutOfBoard() {
     board.getPiece(1, 3);
   }
+
+  @Test
+  public void testIsNotFull() {
+    board.placePiece(1, 1, PieceType.WHITE);
+    assertFalse(board.isFull());
+  }
+
+  @Test
+  public void testIsFull() {
+    board.placePiece(1, 1, PieceType.WHITE);
+    board.placePiece(2, 1, PieceType.WHITE);
+    board.placePiece(2, 2, PieceType.WHITE);
+    board.placePiece(3, 1, PieceType.WHITE);
+    board.placePiece(3, 2, PieceType.WHITE);
+    board.placePiece(3, 3, PieceType.WHITE);
+    board.placePiece(4, 1, PieceType.WHITE);
+    board.placePiece(4, 2, PieceType.WHITE);
+    board.placePiece(4, 3, PieceType.WHITE);
+    board.placePiece(4, 4, PieceType.WHITE);
+    board.placePiece(5, 2, PieceType.WHITE);
+    board.placePiece(5, 3, PieceType.WHITE);
+    board.placePiece(5, 4, PieceType.WHITE);
+    board.placePiece(6, 3, PieceType.WHITE);
+    board.placePiece(6, 4, PieceType.WHITE);
+    board.placePiece(7, 4, PieceType.WHITE);
+    assertTrue(board.isFull());
+  }
 }

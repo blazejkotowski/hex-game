@@ -37,6 +37,14 @@ public class Board {
     return fieldOnBoard(xCoordinate, yCoordinate) && fieldFree(xCoordinate, yCoordinate);
   }
 
+  public Boolean isFull() {
+    return fieldsCount() == pieces.values().size();
+  }
+
+  private int fieldsCount() {
+    return size * size;
+  }
+
   private void assertCanPlacePiece(int xCoordinate, int yCoordinate) {
     assertCoordinates(xCoordinate, yCoordinate);
     if(!canPlacePiece(xCoordinate, yCoordinate)) {
