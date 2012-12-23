@@ -7,7 +7,7 @@ import org.hexgame.core.strategies.Strategy;
 
 public class RandomStrategy extends Strategy {
 
-  public Field getMove(Board board, PieceType pieceType) {
+  public Field getField(Board board, PieceType pieceType) {
     List<Field> free = freeFields(board);
     return free.get((new Random()).nextInt(free.size()));
   }

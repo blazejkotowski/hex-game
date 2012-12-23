@@ -5,7 +5,7 @@ import java.util.ArrayList;
 import org.hexgame.core.*;
 
 public abstract class Strategy {
-  abstract public Field getMove(Board board, PieceType pieceType);
+  abstract public Field getField(Board board, PieceType pieceType);
 
   protected List<Field> freeFields(Board board) {
     List<Field> result = new ArrayList<Field>();
