@@ -40,28 +40,29 @@ public class Board {
   }
 
   public Boolean bridgeExists(PieceType pieceType) {
-    Set<Field> uncheckedFields = new HashSet<Field>();
+    List<Set<Field>> disjoint = disjointFieldSets(pieceType);
+    for(int i = 0; i < disjoint.size(); i++) {
+      Set<Field> upperBoundarySet = upperBoundary(pieceType);
+      Set<Field> lowerBoundarySet = lowerBoundary(pieceType);
+      upperBoundarySet.retainAll(disjoint.get(i));
+      lowerBoundarySet.retainAll(disjoint.get(i));
+      if(!upperBoundarySet.isEmpty() && !lowerBoundarySet.isEmpty()) return true;
+    }
+    return false;
+  }
+
+  private List<Set<Field>> disjointFieldSets(PieceType pieceType) {
+    List<Set<Field>> result = new ArrayList<Set<Field>>();
+
+    Set<Field> uncheckedFields = fieldSet(pieceType);
     Set<Field> adjacentFields = new HashSet<Field>();
     Stack<Field> waitingFields = new Stack<Field>();
-
-    for(int i = 1; i < size * 2; i++) {
-      for(int l = 1; l <= size; l++) {
-        if(fieldOnBoard(i, l) && getPiece(i, l) == pieceType)
-          uncheckedFields.add(new Field(i, l));
-      }
-    }
 
     while(!uncheckedFields.isEmpty() || !adjacentFields.isEmpty() || !waitingFields.empty()) {
       if(waitingFields.empty()) {
         if(!adjacentFields.isEmpty()) {
-          Set<Field> upperBoundarySet = upperBoundaryFor(pieceType);
-          Set<Field> lowerBoundarySet = lowerBoundaryFor(pieceType);
-          upperBoundarySet.retainAll(adjacentFields);
-          lowerBoundarySet.retainAll(adjacentFields);
-          if(!upperBoundarySet.isEmpty() && !lowerBoundarySet.isEmpty())
-            return true;
-          else
-            adjacentFields.clear();
+          result.add(adjacentFields);
+          adjacentFields = new HashSet<Field>();
         }
         else {
           Field newElement = uncheckedFields.iterator().next();
@@ -81,10 +82,21 @@ public class Board {
         }
       }
     }
-    return false;
+    return result;
   }
 
-  private Set<Field> upperBoundaryFor(PieceType pieceType) {
+  private Set<Field> fieldSet(PieceType pieceType) {
+    Set<Field> result = new HashSet<Field>();
+    for(int i = 1; i < size * 2; i++) {
+      for(int l = 1; l <= size; l++) {
+        if(fieldOnBoard(i, l) && getPiece(i, l) == pieceType)
+          result.add(new Field(i, l));
+      }
+    }
+    return result;
+  }
+
+  private Set<Field> upperBoundary(PieceType pieceType) {
     Set<Field> result = new HashSet<Field>();
     if(pieceType == PieceType.WHITE) {
       for(int i = 1; i <= size; i++) result.add(new Field(i, 1));
@@ -95,7 +107,7 @@ public class Board {
     return result;
   }
 
-  private Set<Field> lowerBoundaryFor(PieceType pieceType) {
+  private Set<Field> lowerBoundary(PieceType pieceType) {
     Set<Field> result = new HashSet<Field>();
     if(pieceType == PieceType.WHITE) {
       for(int i = size; i < 2 * size; i++) result.add(new Field(i, size));
