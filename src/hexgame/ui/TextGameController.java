@@ -12,10 +12,10 @@ public class TextGameController {
   Player currentPlayer;
   Console console;
 
-  public TextGameController(int size) {
+  public TextGameController() {
     Player playerA = new Player(PieceType.WHITE);
     Player playerB = new Player(PieceType.BLACK);
-    game = new Game(size, playerA, playerB);
+    game = new Game(10, playerA, playerB);
     board = game.getBoard();
     renderer = new TextBoardRenderer(board);
     console = System.console();
