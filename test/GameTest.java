@@ -98,4 +98,35 @@ public class GameTest {
     game.performMove(new Move(game.getBoard(), playerB, 7, 4));
     assertTrue(game.isFinished());
   }
+
+  @Test
+  public void testWhiteWon() {
+    game.performMove(new Move(game.getBoard(), playerA, 3, 1));
+    game.performMove(new Move(game.getBoard(), playerB, 1, 1));
+    game.performMove(new Move(game.getBoard(), playerA, 3, 2));
+    game.performMove(new Move(game.getBoard(), playerB, 4, 2));
+    game.performMove(new Move(game.getBoard(), playerA, 4, 3));
+    game.performMove(new Move(game.getBoard(), playerB, 5, 3));
+    game.performMove(new Move(game.getBoard(), playerA, 5, 4));
+    assertTrue(game.isFinished());
+    assertEquals(game.getWinner(), playerA);
+  }
+
+  @Test
+  public void testBlackWon() {
+    game.performMove(new Move(game.getBoard(), playerA, 2, 2));
+    game.performMove(new Move(game.getBoard(), playerB, 1, 1));
+    game.performMove(new Move(game.getBoard(), playerA, 3, 3));
+    game.performMove(new Move(game.getBoard(), playerB, 2, 1));
+    game.performMove(new Move(game.getBoard(), playerA, 4, 4));
+    game.performMove(new Move(game.getBoard(), playerB, 3, 2));
+    game.performMove(new Move(game.getBoard(), playerA, 4, 1));
+    game.performMove(new Move(game.getBoard(), playerB, 4, 3));
+    game.performMove(new Move(game.getBoard(), playerA, 4, 2));
+    game.performMove(new Move(game.getBoard(), playerB, 5, 3));
+    game.performMove(new Move(game.getBoard(), playerA, 6, 4));
+    game.performMove(new Move(game.getBoard(), playerB, 6, 3));
+    assertTrue(game.isFinished());
+    assertEquals(game.getWinner(), playerB);
+  }
 }

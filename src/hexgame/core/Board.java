@@ -1,8 +1,6 @@
 package org.hexgame.core;
 
-import java.util.Arrays;
-import java.util.List;
-import java.util.HashMap;
+import java.util.*;
 
 public class Board {
   private int size;
@@ -39,6 +37,86 @@ public class Board {
 
   public Boolean isFull() {
     return fieldsCount() == pieces.values().size();
+  }
+
+  public Boolean bridgeExists(PieceType pieceType) {
+    Set<List<Integer>> uncheckedFields = new HashSet<List<Integer>>();
+    Set<List<Integer>> adjacentFields = new HashSet<List<Integer>>();
+    Stack<List<Integer>> waitingFields = new Stack<List<Integer>>();
+
+    for(int i = 1; i < size * 2; i++) {
+      for(int l = 1; l <= size; l++) {
+        if(fieldOnBoard(i, l) && getPiece(i, l) == pieceType)
+          uncheckedFields.add(Arrays.asList(i, l));
+      }
+    }
+
+    while(!uncheckedFields.isEmpty() || !adjacentFields.isEmpty() || !waitingFields.empty()) {
+      if(waitingFields.empty()) {
+        if(!adjacentFields.isEmpty()) {
+          Set<List<Integer>> upperBoundarySet = upperBoundaryFor(pieceType);
+          Set<List<Integer>> lowerBoundarySet = lowerBoundaryFor(pieceType);
+          upperBoundarySet.retainAll(adjacentFields);
+          lowerBoundarySet.retainAll(adjacentFields);
+          if(!upperBoundarySet.isEmpty() && !lowerBoundarySet.isEmpty())
+            return true;
+          else
+            adjacentFields.clear();
+        }
+        else {
+          List<Integer> newElement = uncheckedFields.iterator().next();
+          uncheckedFields.remove(newElement);
+          waitingFields.push(newElement);
+        }
+      }
+      else {
+        List<Integer> poppedField = waitingFields.pop();
+        adjacentFields.add(poppedField);
+        List<List<Integer>> adjacentToPopped = adjacentFields(poppedField);
+        for(int i = 0; i < adjacentToPopped.size(); i++) {
+          if(uncheckedFields.contains(adjacentToPopped.get(i))) {
+            uncheckedFields.remove(adjacentToPopped.get(i));
+            waitingFields.push(adjacentToPopped.get(i));
+          }
+        }
+      }
+    }
+    return false;
+  }
+
+  private List<List<Integer>> adjacentFields(List<Integer> field) {
+    List<List<Integer>> result = new ArrayList<List<Integer>>();
+    int x = field.get(0);
+    int y = field.get(1);
+    result.add(Arrays.asList(x-1, y-1));
+    result.add(Arrays.asList(x-1, y));
+    result.add(Arrays.asList(x, y+1));
+    result.add(Arrays.asList(x+1, y+1));
+    result.add(Arrays.asList(x+1, y));
+    result.add(Arrays.asList(x, y-1));
+    return result;
+  }
+
+  private Set<List<Integer>> upperBoundaryFor(PieceType pieceType) {
+    Set<List<Integer>> result = new HashSet<List<Integer>>();
+    if(pieceType == PieceType.WHITE) {
+      for(int i = 1; i <= size; i++) result.add(Arrays.asList(i, 1));
+    }
+    else if(pieceType == PieceType.BLACK) {
+      for(int i = 1; i <= size; i++)  result.add(Arrays.asList(i, i));
+    }
+    return result;
+  }
+
+  private Set<List<Integer>> lowerBoundaryFor(PieceType pieceType) {
+    Set<List<Integer>> result = new HashSet<List<Integer>>();
+    if(pieceType == PieceType.WHITE) {
+      for(int i = size; i < 2 * size; i++) result.add(Arrays.asList(i, size));
+    }
+    else if(pieceType == PieceType.BLACK) {
+      for(int i = size; i < 2 * size; i++)  result.add(Arrays.asList(i, i - size + 1));
+    }
+    return result;
   }
 
   private int fieldsCount() {

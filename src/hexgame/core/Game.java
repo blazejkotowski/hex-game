@@ -28,11 +28,16 @@ public class Game {
   }
 
   public Boolean isFinished() {
-    return board.isFull();
+    return board.isFull() || getWinner() != null;
   }
 
   public Player getWinner() {
-    return playerA;
+    if(board.bridgeExists(playerA.getPieceType()))
+      return playerA;
+    else if(board.bridgeExists(playerB.getPieceType()))
+      return playerB;
+    else
+      return null;
   }
 
   public Player currentPlayer() {
