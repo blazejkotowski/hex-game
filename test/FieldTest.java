@@ -1,6 +1,8 @@
 import org.junit.*;
 import java.util.Set;
 import java.util.HashSet;
+import java.util.List;
+import java.util.ArrayList;
 import static org.junit.Assert.*;
 import org.hexgame.core.Field;
 
@@ -40,5 +42,17 @@ public class FieldTest {
     Set<Field> set = new HashSet();
     set.add(field);
     assertFalse(set.contains(new Field(3, 3)));
+  }
+
+  @Test
+  public void testAdjacentField() {
+    List<Field> list = field.adjacentFields();
+    assertEquals(list.size(), 6);
+    assertTrue(list.contains(new Field(1, 2)));
+    assertTrue(list.contains(new Field(1, 3)));
+    assertTrue(list.contains(new Field(2, 4)));
+    assertTrue(list.contains(new Field(3, 4)));
+    assertTrue(list.contains(new Field(3, 3)));
+    assertTrue(list.contains(new Field(2, 4)));
   }
 }

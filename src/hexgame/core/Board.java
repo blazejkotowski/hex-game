@@ -72,7 +72,7 @@ public class Board {
       else {
         Field poppedField = waitingFields.pop();
         adjacentFields.add(poppedField);
-        List<Field> adjacentToPopped = adjacentFields(poppedField);
+        List<Field> adjacentToPopped = poppedField.adjacentFields();
         for(int i = 0; i < adjacentToPopped.size(); i++) {
           if(uncheckedFields.contains(adjacentToPopped.get(i))) {
             uncheckedFields.remove(adjacentToPopped.get(i));
@@ -82,19 +82,6 @@ public class Board {
       }
     }
     return false;
-  }
-
-  private List<Field> adjacentFields(Field field) {
-    List<Field> result = new ArrayList<Field>();
-    int x = field.xCoordinate;
-    int y = field.yCoordinate;
-    result.add(new Field(x-1, y-1));
-    result.add(new Field(x-1, y));
-    result.add(new Field(x, y+1));
-    result.add(new Field(x+1, y+1));
-    result.add(new Field(x+1, y));
-    result.add(new Field(x, y-1));
-    return result;
   }
 
   private Set<Field> upperBoundaryFor(PieceType pieceType) {
