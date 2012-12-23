@@ -1,15 +1,20 @@
 package org.hexgame.core.strategies;
 
+import java.util.List;
 import org.hexgame.core.*;
 
 public abstract class Strategy {
   Board board;
-  Player player;
+  PieceType pieceType;
 
-  public Strategy(Board _board, Player _player) {
+  public Strategy(Board _board, PieceType _pieceType) {
     board = _board;
-    player = _player;
+    pieceType = _pieceType;
   }
 
-  abstract public Move getMove();
+  public Board getBoard() {
+    return board;
+  }
+
+  abstract public List<Integer> getMove();
 }
