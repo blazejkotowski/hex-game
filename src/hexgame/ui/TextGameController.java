@@ -29,6 +29,7 @@ public class TextGameController {
       printBoard();
       askForAction();
     }
+    finish();
   }
 
   private void greet() {
@@ -94,6 +95,21 @@ public class TextGameController {
   }
 
   private void printBoard() {
+    console.printf("\n");
     console.printf(renderer.toString());
+    console.printf("\n");
+  }
+
+  private void finish() {
+    printBoard();
+    Player winner = game.getWinner();
+    console.printf("GAME OVER!\n");
+    if(winner == null) {
+      console.printf("It's a draw!\n");
+    }
+    else {
+      console.printf(winner.toString() + " has won!\n");
+    }
+    System.exit(0);
   }
 }
