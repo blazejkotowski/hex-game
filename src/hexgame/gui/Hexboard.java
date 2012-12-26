@@ -2,6 +2,7 @@ package org.hexgame.gui;
 
 import org.hexgame.gui.Hexagon;
 import javax.swing.*;
+import java.awt.*;
 
 class Hexboard extends JPanel {
     public Hexagon [][] tab=new Hexagon [21][11];
