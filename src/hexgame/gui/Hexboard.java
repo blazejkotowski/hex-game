@@ -3,10 +3,11 @@ package org.hexgame.gui;
 import org.hexgame.gui.Hexagon;
 import javax.swing.*;
 
-class Hexboard extends JFrame {
+class Hexboard extends JPanel {
     public Hexagon [][] tab=new Hexagon [21][11];
-    private int bx=600,by=20;
+    private int bx=142,by=0;
     public Hexboard() {
+	setPreferredSize(new Dimension(310,630));
         setLayout(null);
         int m=0;
         for(int i=0;i<21;++i) {
