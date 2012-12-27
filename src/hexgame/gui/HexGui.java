@@ -126,17 +126,6 @@ Game game;
         setTitle("Hex Game");
         setCursor(new java.awt.Cursor(java.awt.Cursor.DEFAULT_CURSOR));
 
-	javax.swing.GroupLayout hexboardLayout = new javax.swing.GroupLayout(hexboard);
-        hexboard.setLayout(hexboardLayout);
-        hexboardLayout.setHorizontalGroup(
-            hexboardLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 460, Short.MAX_VALUE)
-        );
-        hexboardLayout.setVerticalGroup(
-            hexboardLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 496, Short.MAX_VALUE)
-        );
-
         jMenu1.setText("File");
 
         jMenuItem1.setText("New Game");
@@ -171,17 +160,6 @@ Game game;
 
         setJMenuBar(jMenuBar1);
 
-        javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
-        getContentPane().setLayout(layout);
-        layout.setHorizontalGroup(
-            layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addComponent(hexboard, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-        );
-        layout.setVerticalGroup(
-            layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addComponent(hexboard, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-        );
-
         pack();
     }// </editor-fold>//GEN-END:initComponents
 
@@ -200,7 +178,7 @@ Game game;
     }//GEN-LAST:event_jMenuItem2MouseClicked
 
     private void jMenuItem3MousePressed(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jMenuItem3MouseClicked
-	 
+	jFrame1.pack();
         jFrame1.setVisible(true); 
     }//GEN-LAST:event_jMenuItem3MouseClicked
 
