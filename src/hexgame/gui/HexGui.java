@@ -75,7 +75,7 @@ Game game;
         jMenuItem2 = new javax.swing.JMenuItem();
         jMenu2 = new javax.swing.JMenu();
         jMenuItem3 = new javax.swing.JMenuItem();
-	initHexboard(5);
+	initHexboard(11);
 
         jButton1.setText("OK !");
         jButton1.addActionListener(new java.awt.event.ActionListener() {
