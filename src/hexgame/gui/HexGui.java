@@ -37,6 +37,32 @@ Game game;
      */
     @SuppressWarnings("unchecked")
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
+	private void initHexboard(int size){
+
+		hexboard= new Hexboard(size);
+		javax.swing.GroupLayout hexboardLayout = new javax.swing.GroupLayout(hexboard);
+        hexboard.setLayout(hexboardLayout);
+        hexboardLayout.setHorizontalGroup(
+            hexboardLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGap(0, 460, Short.MAX_VALUE)
+        );
+        hexboardLayout.setVerticalGroup(
+            hexboardLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGap(0, 496, Short.MAX_VALUE)
+        );
+
+	javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
+        getContentPane().setLayout(layout);
+        layout.setHorizontalGroup(
+            layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addComponent(hexboard, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+        );
+        layout.setVerticalGroup(
+            layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addComponent(hexboard, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+        );
+	}
+
     private void initComponents() {
 
         jFrame1 = new javax.swing.JFrame();
@@ -49,7 +75,7 @@ Game game;
         jMenuItem2 = new javax.swing.JMenuItem();
         jMenu2 = new javax.swing.JMenu();
         jMenuItem3 = new javax.swing.JMenuItem();
-	hexboard= new Hexboard(11);
+	initHexboard(5);
 
         jButton1.setText("OK !");
         jButton1.addActionListener(new java.awt.event.ActionListener() {
@@ -164,7 +190,8 @@ Game game;
         Player playerA = new Player(PieceType.WHITE);
         Player playerB = new Player(PieceType.BLACK);
         game = new Game(10, playerA, playerB);
-        board = game.getBoard();
+        board = game.getBoard(); hexboard.setVisible(false);
+	initHexboard(11);
     }//GEN-LAST:event_jMenuItem1MouseClicked
 
     private void jMenuItem2MousePressed(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jMenuItem2MouseClicked
