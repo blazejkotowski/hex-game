@@ -5,25 +5,19 @@
 
 /*
  * HexGui.java
- *
- * Created on 2012-12-22, 12:17:54
  */
 
 package org.hexgame.gui;
 
-import java.util.regex.*;
+
 import org.hexgame.core.*;
-import org.hexgame.ui.TextBoardRenderer;
 
-/**
- *
- * @author piotrek
- */
-public class HexGui extends javax.swing.JFrame {
 
-    Game game;
+public class HexGui extends javax.swing.JFrame  {
+	    
+Game game;
     Board board;
-    TextBoardRenderer renderer;
+    //TextBoardRenderer renderer;
     Player currentPlayer;
 
     /** Creates new form HexGui */
@@ -64,8 +58,8 @@ public class HexGui extends javax.swing.JFrame {
         });
 
         jSpinner1.addMouseListener(new java.awt.event.MouseAdapter() {
-            public void mouseClicked(java.awt.event.MouseEvent evt) {
-                jSpinner1MouseClicked(evt);
+            public void mousePressed(java.awt.event.MouseEvent evt) {
+                jSpinner1MousePressed(evt);
             }
         });
 
@@ -109,16 +103,16 @@ public class HexGui extends javax.swing.JFrame {
 
         jMenuItem1.setText("New Game");
         jMenuItem1.addMouseListener(new java.awt.event.MouseAdapter() {
-            public void mouseClicked(java.awt.event.MouseEvent evt) {
-                jMenuItem1MouseClicked(evt);
+            public void mousePressed(java.awt.event.MouseEvent evt) {
+                jMenuItem1MousePressed(evt);
             }
         });
         jMenu1.add(jMenuItem1);
 
         jMenuItem2.setText("Exit");
         jMenuItem2.addMouseListener(new java.awt.event.MouseAdapter() {
-            public void mouseClicked(java.awt.event.MouseEvent evt) {
-                jMenuItem2MouseClicked(evt);
+            public void mousePressed(java.awt.event.MouseEvent evt) {
+                jMenuItem2MousePressed(evt);
             }
         });
         jMenu1.add(jMenuItem2);
@@ -129,8 +123,8 @@ public class HexGui extends javax.swing.JFrame {
 
         jMenuItem3.setText("Preferences");
         jMenuItem3.addMouseListener(new java.awt.event.MouseAdapter() {
-            public void mouseClicked(java.awt.event.MouseEvent evt) {
-                jMenuItem3MouseClicked(evt);
+            public void mousePressed(java.awt.event.MouseEvent evt) {
+                jMenuItem3MousePressed(evt);
             }
         });
         jMenu2.add(jMenuItem3);
@@ -153,7 +147,7 @@ public class HexGui extends javax.swing.JFrame {
         pack();
     }// </editor-fold>//GEN-END:initComponents
 
-    private void jMenuItem1MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jMenuItem1MouseClicked
+    private void jMenuItem1MousePressed(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jMenuItem1MouseClicked
 
         Player playerA = new Player(PieceType.WHITE);
         Player playerB = new Player(PieceType.BLACK);
@@ -161,14 +155,14 @@ public class HexGui extends javax.swing.JFrame {
         board = game.getBoard();
     }//GEN-LAST:event_jMenuItem1MouseClicked
 
-    private void jMenuItem2MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jMenuItem2MouseClicked
-
-        System.exit(0);
+    private void jMenuItem2MousePressed(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jMenuItem2MouseClicked
+	
+        System.exit(0); 
     }//GEN-LAST:event_jMenuItem2MouseClicked
 
-    private void jMenuItem3MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jMenuItem3MouseClicked
-
-        jFrame1.setVisible(true);
+    private void jMenuItem3MousePressed(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jMenuItem3MouseClicked
+	 
+        jFrame1.setVisible(true); 
     }//GEN-LAST:event_jMenuItem3MouseClicked
 
     private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
@@ -176,7 +170,7 @@ public class HexGui extends javax.swing.JFrame {
         jFrame1.setVisible(false);
     }//GEN-LAST:event_jButton1ActionPerformed
 
-    private void jSpinner1MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jSpinner1MouseClicked
+    private void jSpinner1MousePressed(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jSpinner1MouseClicked
         // TODO add your handling code here:
     }//GEN-LAST:event_jSpinner1MouseClicked
 
@@ -186,7 +180,7 @@ public class HexGui extends javax.swing.JFrame {
     public static void start() {
         java.awt.EventQueue.invokeLater(new Runnable() {
             public void run() {
-                HexGui hex = new HexGui();
+                HexGui hex = new HexGui(); 
                 hex.setVisible(true);
             }
         });
