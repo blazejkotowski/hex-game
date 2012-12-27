@@ -49,6 +49,7 @@ Game game;
         jMenuItem2 = new javax.swing.JMenuItem();
         jMenu2 = new javax.swing.JMenu();
         jMenuItem3 = new javax.swing.JMenuItem();
+		hexboard=new Hexboard(11);
 
         jButton1.setText("OK !");
         jButton1.addActionListener(new java.awt.event.ActionListener() {
@@ -134,7 +135,8 @@ Game game;
         setJMenuBar(jMenuBar1);
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
-        getContentPane().setLayout(layout);
+        getContentPane().setLayout(new java.awt.FlowLayout());
+		add(hexboard);
         layout.setHorizontalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGap(0, 460, Short.MAX_VALUE)
@@ -197,6 +199,7 @@ Game game;
     private javax.swing.JMenuItem jMenuItem2;
     private javax.swing.JMenuItem jMenuItem3;
     private javax.swing.JSpinner jSpinner1;
+	private Hexboard hexboard;
     // End of variables declaration//GEN-END:variables
 
 }

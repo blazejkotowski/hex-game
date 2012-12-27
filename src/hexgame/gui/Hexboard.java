@@ -7,11 +7,13 @@ import java.awt.*;
 class Hexboard extends JPanel {
     public Hexagon [][] tab=new Hexagon [21][11];
     private int bx=142,by=0;
-    public Hexboard() {
+	private int size;
+    public Hexboard(int size) {
+	this.size=size;
 	setPreferredSize(new Dimension(310,630));
         setLayout(null);
         int m=0;
-        for(int i=0;i<21;++i) {
+        for(int i=0;i<2*size-1;++i) {
             int bx1=bx;
             for(int j=0;j<=m;++j) {
                 Hexagon tmp=new Hexagon(15);
@@ -19,7 +21,7 @@ class Hexboard extends JPanel {
                 tab[i][j]=tmp; add(tab[i][j]);
                 bx1+=26;
             }
-            if(i<10) {
+            if(i<size-1) {
                 m++;
                 bx-=13;
             }
