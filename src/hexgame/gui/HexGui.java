@@ -75,6 +75,7 @@ Game game;
         jMenuItem2 = new javax.swing.JMenuItem();
         jMenu2 = new javax.swing.JMenu();
         jMenuItem3 = new javax.swing.JMenuItem();
+	jMenuItem4 = new javax.swing.JMenuItem();
 	initHexboard(11);
 
         jButton1.setText("OK !");
@@ -156,6 +157,14 @@ Game game;
         });
         jMenu2.add(jMenuItem3);
 
+	jMenuItem4.setText("Undo");
+        jMenuItem4.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mousePressed(java.awt.event.MouseEvent evt) {
+                jMenuItem4MousePressed(evt);
+            }
+        });
+        jMenu2.add(jMenuItem4);
+
         jMenuBar1.add(jMenu2);
 
         setJMenuBar(jMenuBar1);
@@ -182,6 +191,10 @@ Game game;
     private void jMenuItem3MousePressed(java.awt.event.MouseEvent evt) {//event Preferences
 	jFrame1.pack();
         jFrame1.setVisible(true); 
+    }//
+
+	private void jMenuItem4MousePressed(java.awt.event.MouseEvent evt) {//event Undo
+		//cofanie ruchu 
     }//
 
     private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//event OK!
@@ -215,6 +228,7 @@ Game game;
     private javax.swing.JMenuItem jMenuItem1;
     private javax.swing.JMenuItem jMenuItem2;
     private javax.swing.JMenuItem jMenuItem3;
+	private javax.swing.JMenuItem jMenuItem4;
     private javax.swing.JSpinner jSpinner1;
 	private Hexboard hexboard;
     // End of variables declaration//GEN-END:variables
