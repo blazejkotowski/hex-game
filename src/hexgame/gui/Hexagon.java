@@ -38,8 +38,8 @@ class Hexagon extends JPanel implements MouseListener, MouseMotionListener {
   }
 
   protected void paintComponent(Graphics g) {
-    super.paintComponent(g);
     super.setOpaque(false);
+    super.paintComponent(g);
     Graphics2D g2=(Graphics2D) g;
     double [] pointx=new double [6];
     double [] pointy=new double [6];
