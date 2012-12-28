@@ -30,7 +30,7 @@ class Hexboard extends JPanel {
         bx+=13;
         m--;
       }
-      by+=30;
+      by+=24;
     }
   }
 }
