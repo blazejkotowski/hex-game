@@ -67,7 +67,7 @@ Game game;
 
         jFrame1 = new javax.swing.JFrame();
         jButton1 = new javax.swing.JButton();
-        jSpinner1 = new javax.swing.JSpinner(new javax.swing.SpinnerNumberModel(0, 0, 11, 1));
+        jSpinner1 = new javax.swing.JSpinner(new javax.swing.SpinnerNumberModel(11, 0, 11, 1));
         jLabel1 = new javax.swing.JLabel();
         jMenuBar1 = new javax.swing.JMenuBar();
         jMenu1 = new javax.swing.JMenu();
