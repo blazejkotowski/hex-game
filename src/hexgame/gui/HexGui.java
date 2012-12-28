@@ -67,7 +67,7 @@ Game game;
 
         jFrame1 = new javax.swing.JFrame();
         jButton1 = new javax.swing.JButton();
-        jSpinner1 = new javax.swing.JSpinner();
+        jSpinner1 = new javax.swing.JSpinner(new javax.swing.SpinnerNumberModel(0, 0, 11, 1));
         jLabel1 = new javax.swing.JLabel();
         jMenuBar1 = new javax.swing.JMenuBar();
         jMenu1 = new javax.swing.JMenu();
@@ -169,7 +169,9 @@ Game game;
         Player playerB = new Player(PieceType.BLACK);
         game = new Game(10, playerA, playerB);
         board = game.getBoard(); hexboard.setVisible(false);
-	initHexboard(11);
+	javax.swing.SpinnerNumberModel model = (javax.swing.SpinnerNumberModel)jSpinner1.getModel();
+	int value = model.getNumber().intValue();
+	initHexboard(value);
     }//GEN-LAST:event_jMenuItem1MouseClicked
 
     private void jMenuItem2MousePressed(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jMenuItem2MouseClicked
