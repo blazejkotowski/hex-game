@@ -163,7 +163,7 @@ Game game;
         pack();
     }// </editor-fold>//GEN-END:initComponents
 
-    private void jMenuItem1MousePressed(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jMenuItem1MouseClicked
+    private void jMenuItem1MousePressed(java.awt.event.MouseEvent evt) {//event New Game
 
         Player playerA = new Player(PieceType.WHITE);
         Player playerB = new Player(PieceType.BLACK);
@@ -172,22 +172,22 @@ Game game;
 	javax.swing.SpinnerNumberModel model = (javax.swing.SpinnerNumberModel)jSpinner1.getModel();
 	int value = model.getNumber().intValue();
 	initHexboard(value);
-    }//GEN-LAST:event_jMenuItem1MouseClicked
+    }
 
-    private void jMenuItem2MousePressed(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jMenuItem2MouseClicked
+    private void jMenuItem2MousePressed(java.awt.event.MouseEvent evt) {//event Exit
 	
         System.exit(0); 
-    }//GEN-LAST:event_jMenuItem2MouseClicked
+    }//
 
-    private void jMenuItem3MousePressed(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jMenuItem3MouseClicked
+    private void jMenuItem3MousePressed(java.awt.event.MouseEvent evt) {//event Preferences
 	jFrame1.pack();
         jFrame1.setVisible(true); 
-    }//GEN-LAST:event_jMenuItem3MouseClicked
+    }//
 
-    private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
+    private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//event OK!
 
         jFrame1.setVisible(false);
-    }//GEN-LAST:event_jButton1ActionPerformed
+    }//
 
     private void jSpinner1MousePressed(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jSpinner1MouseClicked
         // TODO add your handling code here:
