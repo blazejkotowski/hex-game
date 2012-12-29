@@ -1,22 +1,16 @@
 package org.hexgame.ui;
 
 import org.hexgame.core.*;
+import org.hexgame.controllers.GuiGameController;
 import javax.swing.*;
 import java.awt.event.*;
 
 public class HexGui extends javax.swing.JFrame  {
-
-  Game game;
-  Board board;
-  Player currentPlayer;
+  GuiGameController controller;
 
   /** Creates new form HexGui */
-  public HexGui() {
-
-    Player playerA = new Player(PieceType.WHITE);
-    Player playerB = new Player(PieceType.BLACK);
-    game = new Game(10, playerA, playerB);
-    board = game.getBoard();
+  public HexGui(GuiGameController _controller) {
+    controller = _controller;
     initComponents();
   }
 
@@ -163,11 +157,7 @@ public class HexGui extends javax.swing.JFrame  {
   }// </editor-fold>//GEN-END:initComponents
 
   private void jMenuItem1MousePressed(MouseEvent evt) {//event New Game
-
-    Player playerA = new Player(PieceType.WHITE);
-    Player playerB = new Player(PieceType.BLACK);
-    game = new Game(10, playerA, playerB);
-    board = game.getBoard(); hexboard.setVisible(false);
+    hexboard.setVisible(false);
     SpinnerNumberModel model = (SpinnerNumberModel)jSpinner1.getModel();
     int value = model.getNumber().intValue();
     initHexboard(value);
@@ -199,10 +189,11 @@ public class HexGui extends javax.swing.JFrame  {
   /**
    * @param args the command line arguments
    */
-  public static void start() {
+  public static void start(GuiGameController _controller) {
+    final GuiGameController controller = _controller;
     java.awt.EventQueue.invokeLater(new Runnable() {
       public void run() {
-        HexGui hex = new HexGui();
+        HexGui hex = new HexGui(controller);
         hex.setVisible(true);
       }
     });

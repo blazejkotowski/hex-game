@@ -9,18 +9,19 @@ public class GuiGameController {
   Board board;
   Player playerA, playerB, currentPlayer;
 
-  public GuiGameController() {
+  public void start() {
+    initGuiComponents();
+    startNewGame();
+  }
+
+  public void startNewGame() {
     playerA = new Player(PieceType.WHITE);
     playerB = new AIPlayer(PieceType.BLACK, new RandomStrategy());
     game = new Game(10, playerA, playerB);
     board = game.getBoard();
   }
 
-  public void start() {
-    initGuiComponents();
-  }
-
   private void initGuiComponents() {
-    HexGui.start();
+    HexGui.start(this);
   }
 }
