@@ -59,9 +59,11 @@ public class GuiGameController extends GameController {
 
   private void finish() { }
 
-  private void redrawGuiComponents() { }
-
   private void initGuiComponents() {
     HexGui.start(this);
+  }
+
+  private void redrawGuiComponents() {
+    gui.redrawComponents(game, board);
   }
 }

@@ -199,6 +199,10 @@ public class HexGui extends javax.swing.JFrame  {
     });
   }
 
+  public void redrawComponents(Game game, Board board) {
+    // TODO
+  }
+
   // Variables declaration - do not modify//GEN-BEGIN:variables
   private JButton jButton1;
   private JFrame jFrame1;
