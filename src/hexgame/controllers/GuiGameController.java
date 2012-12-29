@@ -21,6 +21,10 @@ public class GuiGameController {
     board = game.getBoard();
   }
 
+  public void exitAction() {
+    System.exit(0);
+  }
+
   private void initGuiComponents() {
     HexGui.start(this);
   }

@@ -164,8 +164,7 @@ public class HexGui extends javax.swing.JFrame  {
   }
 
   private void jMenuItem2MousePressed(MouseEvent evt) {//event Exit
-
-    System.exit(0);
+    controller.exitAction();
   }//
 
   private void jMenuItem3MousePressed(MouseEvent evt) {//event Preferences
