@@ -59,7 +59,6 @@ public class HexGui extends javax.swing.JFrame  {
     jMenuItem1 = new JMenuItem();
     jMenuItem2 = new JMenuItem();
     jMenu2 = new JMenu();
-    jMenuItem3 = new JMenuItem();
     jMenuItem4 = new JMenuItem();
     initHexboard(11);
 
@@ -134,14 +133,6 @@ public class HexGui extends javax.swing.JFrame  {
 
     jMenu2.setText("Edit");
 
-    jMenuItem3.setText("Preferences");
-    jMenuItem3.addMouseListener(new MouseAdapter() {
-      public void mousePressed(MouseEvent evt) {
-        jMenuItem3MousePressed(evt);
-      }
-    });
-    jMenu2.add(jMenuItem3);
-
     jMenuItem4.setText("Undo");
     jMenuItem4.addMouseListener(new MouseAdapter() {
       public void mousePressed(MouseEvent evt) {
@@ -158,19 +149,12 @@ public class HexGui extends javax.swing.JFrame  {
   }// </editor-fold>//GEN-END:initComponents
 
   private void jMenuItem1MousePressed(MouseEvent evt) {//event New Game
-    hexboard.setVisible(false);
-    SpinnerNumberModel model = (SpinnerNumberModel)jSpinner1.getModel();
-    int value = model.getNumber().intValue();
-    initHexboard(value);
+    jFrame1.pack();
+    jFrame1.setVisible(true);
   }
 
   private void jMenuItem2MousePressed(MouseEvent evt) {//event Exit
     controller.exitAction();
-  }//
-
-  private void jMenuItem3MousePressed(MouseEvent evt) {//event Preferences
-    jFrame1.pack();
-    jFrame1.setVisible(true);
   }//
 
   private void jMenuItem4MousePressed(MouseEvent evt) {//event Undo
@@ -178,7 +162,11 @@ public class HexGui extends javax.swing.JFrame  {
   }//
 
   private void jButton1ActionPerformed(ActionEvent evt) {//event OK!
-
+    hexboard.setVisible(false);
+    SpinnerNumberModel model = (SpinnerNumberModel)jSpinner1.getModel();
+    int size = model.getNumber().intValue();
+    controller.startNewGameAction(size, "playerA", "playerB");
+    initHexboard(size);
     jFrame1.setVisible(false);
   }//
 
@@ -212,7 +200,6 @@ public class HexGui extends javax.swing.JFrame  {
   private JMenuBar jMenuBar1;
   private JMenuItem jMenuItem1;
   private JMenuItem jMenuItem2;
-  private JMenuItem jMenuItem3;
   private JMenuItem jMenuItem4;
   private JSpinner jSpinner1;
   private Hexboard hexboard;
