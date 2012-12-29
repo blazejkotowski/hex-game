@@ -2,8 +2,10 @@ package org.hexgame.controllers;
 
 import org.hexgame.core.*;
 
-class GameController {
+public class GameController {
   Game game;
   Board board;
   Player playerA, playerB, currentPlayer;
+
+  public void start() { }
 }
