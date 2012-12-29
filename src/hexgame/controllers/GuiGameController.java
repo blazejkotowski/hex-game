@@ -6,6 +6,12 @@ import org.hexgame.core.strategies.RandomStrategy;
 import org.hexgame.ui.*;
 
 public class GuiGameController extends GameController {
+  HexGui gui;
+
+  public void setGui(HexGui _gui) {
+    gui = _gui;
+  }
+
   public void start() {
     initGuiComponents();
     startNewGame(10);

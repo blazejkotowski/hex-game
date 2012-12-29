@@ -11,6 +11,7 @@ public class HexGui extends javax.swing.JFrame  {
   /** Creates new form HexGui */
   public HexGui(GuiGameController _controller) {
     controller = _controller;
+    controller.setGui(this);
     initComponents();
   }
 
