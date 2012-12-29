@@ -29,6 +29,15 @@
     </jar>
   </target>
 
+  <target name="strategies" depends="compile">
+    <mkdir dir="${jar.dir}"/>
+    <jar destfile="${jar.dir}/strategies/RandomStrategy.jar" basedir="${classes.dir}">
+      <manifest>
+        <attribute name="Main-Class" value="RandomStrategy"/>
+      </manifest>
+    </jar>
+  </target>
+
   <target name="run" depends="jar">
     <java classname="${main-class}" fork="true">
       <classpath>
