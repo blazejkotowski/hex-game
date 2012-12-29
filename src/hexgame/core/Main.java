@@ -1,7 +1,7 @@
 package org.hexgame;
 
-import org.hexgame.ui.TextGameController;
-import org.hexgame.gui.HexGui;
+import org.hexgame.ui.*;
+import org.hexgame.gui.*;
 import java.util.Scanner;
 
 public class Main {
@@ -14,7 +14,8 @@ public class Main {
       gameController.start();
     }
     else if(i == 2) {
-      HexGui.start();
+      GuiGameController gameController = new GuiGameController();
+      gameController.start();
     }
   }
 }
