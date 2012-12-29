@@ -1,7 +1,6 @@
 package org.hexgame;
 
-import org.hexgame.ui.*;
-import org.hexgame.gui.*;
+import org.hexgame.controllers.*;
 import java.util.Scanner;
 
 public class Main {

@@ -1,4 +1,4 @@
-package org.hexgame.ui;
+package org.hexgame.controllers;
 
 import java.io.Console;
 import java.util.regex.*;

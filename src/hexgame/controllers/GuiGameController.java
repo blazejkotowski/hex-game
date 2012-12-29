@@ -1,4 +1,4 @@
-package org.hexgame.gui;
+package org.hexgame.controllers;
 
 import org.hexgame.core.*;
 import org.hexgame.core.strategies.RandomStrategy;
