@@ -4,18 +4,16 @@ import java.io.Console;
 import java.util.regex.*;
 import org.hexgame.core.*;
 import org.hexgame.core.strategies.RandomStrategy;
+import org.hexgame.controllers.GameController;
 import org.hexgame.ui.TextBoardRenderer;
 
-public class TextGameController {
-  Game game;
-  Board board;
+public class TextGameController extends GameController {
   TextBoardRenderer renderer;
-  Player currentPlayer;
   Console console;
 
   public TextGameController() {
-    Player playerA = new Player(PieceType.WHITE);
-    Player playerB = new AIPlayer(PieceType.BLACK, new RandomStrategy());
+    playerA = new Player(PieceType.WHITE);
+    playerB = new AIPlayer(PieceType.BLACK, new RandomStrategy());
     game = new Game(10, playerA, playerB);
     board = game.getBoard();
     renderer = new TextBoardRenderer(board);

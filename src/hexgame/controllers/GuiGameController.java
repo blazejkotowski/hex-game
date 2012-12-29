@@ -1,14 +1,11 @@
 package org.hexgame.controllers;
 
+import org.hexgame.controllers.GameController;
 import org.hexgame.core.*;
 import org.hexgame.core.strategies.RandomStrategy;
 import org.hexgame.ui.*;
 
-public class GuiGameController {
-  Game game;
-  Board board;
-  Player playerA, playerB, currentPlayer;
-
+public class GuiGameController extends GameController {
   public void start() {
     initGuiComponents();
     startNewGame();
