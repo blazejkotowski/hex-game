@@ -1,3 +1,7 @@
+build/**
+private.xml
+private.properties
+private/*
 *.class
 
 # Package Files #
