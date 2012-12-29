@@ -1,4 +1,4 @@
-package org.hexgame.gui;
+package org.hexgame.ui;
 
 import org.hexgame.core.*;
 import javax.swing.*;

@@ -1,4 +1,4 @@
-package org.hexgame.gui;
+package org.hexgame.ui;
 
 import javax.swing.*;
 import java.awt.geom.*;

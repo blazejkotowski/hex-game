@@ -2,7 +2,7 @@ package org.hexgame.controllers;
 
 import org.hexgame.core.*;
 import org.hexgame.core.strategies.RandomStrategy;
-import org.hexgame.gui.*;
+import org.hexgame.ui.*;
 
 public class GuiGameController {
   Game game;

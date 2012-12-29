@@ -1,6 +1,6 @@
-package org.hexgame.gui;
+package org.hexgame.ui;
 
-import org.hexgame.gui.Hexagon;
+import org.hexgame.ui.Hexagon;
 import javax.swing.*;
 import java.awt.*;
 
