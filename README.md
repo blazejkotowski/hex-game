@@ -64,3 +64,4 @@ ant test
 * Tomasz Pewiński
 * Michal Żelazkiewicz
 * Michał Mazurek
+* Błażej Kotowski
