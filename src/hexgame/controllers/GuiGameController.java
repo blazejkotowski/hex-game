@@ -10,11 +10,11 @@ public class GuiGameController extends GameController {
 
   public void setGui(HexGui _gui) {
     gui = _gui;
+    startNewGame(11);
   }
 
   public void start() {
     initGuiComponents();
-    startNewGame(11);
   }
 
   public void startNewGameAction(int size, String pA, String pB) {
@@ -48,6 +48,7 @@ public class GuiGameController extends GameController {
     game = new Game(size, playerA, playerB);
     board = game.getBoard();
     currentPlayer = game.currentPlayer();
+    performNextMove();
   }
 
   private void performNextMove() {
@@ -73,7 +74,9 @@ public class GuiGameController extends GameController {
   }
 
   private void finish() {
-    System.err.println("Game finished");
+    System.err.println("Game finished.");
+    if(game.getWinner() == null) System.err.println("It's a draw.");
+    else System.err.println(game.getWinner().getPieceType() + " won.");
   }
 
   private void initGuiComponents() {
