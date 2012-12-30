@@ -5,7 +5,7 @@ import org.hexgame.core.*;
 public class GameController {
   Game game;
   Board board;
-  Player playerA, playerB, currentPlayer;
+  public Player playerA, playerB, currentPlayer;
 
   public void start() { }
 }

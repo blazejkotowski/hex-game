@@ -1,17 +1,24 @@
 package org.hexgame.ui;
 
+import org.hexgame.ui.Hexboard;
+import org.hexgame.core.Move;
 import javax.swing.*;
 import java.awt.geom.*;
 import java.awt.*;
 import java.awt.event.*;
 
 class Hexagon extends JPanel implements MouseListener, MouseMotionListener {
+  private int x,y;
   private  int size;
   private Color c;
   private boolean B;
+  private Hexboard hexboard;
 
-  public Hexagon(int size) {
+  public Hexagon(int size, int x, int y, Hexboard hexboard) {
+    this.x = x;
+    this.y = y;
     this.size=size;
+    this.hexboard = hexboard;
     addMouseListener(this);
     addMouseMotionListener(this);
     setPreferredSize(new Dimension(26,30));
@@ -26,14 +33,22 @@ class Hexagon extends JPanel implements MouseListener, MouseMotionListener {
   public void mousePressed(MouseEvent e) {}
   public void mouseReleased(MouseEvent e) {}
   public void mouseClicked(MouseEvent e) {
-    if(B) {
-      c=Color.blue;
+  
+    hexboard.gui.controller.placePieceAction(x,y);
+    System.out.println(hexboard.gui.controller.currentPlayer.toString());
+    
+  }
+  
+  public void paintCurrentPlayer() {
+    if(hexboard.gui.controller.currentPlayer.toString() == "WHITE") {
+      c=Color.white;
       B=false;
     }
     else {
-      c=Color.gray;
+      c=Color.black;
       B=true;
     }
+    
     this.paintComponent(this.getGraphics());
   }
 

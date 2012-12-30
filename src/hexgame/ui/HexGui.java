@@ -24,7 +24,8 @@ public class HexGui extends javax.swing.JFrame  {
   // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
   private void initHexboard(int size){
 
-    hexboard= new Hexboard(size);
+    hexboard= new Hexboard(size, this);
+    
     GroupLayout hexboardLayout = new GroupLayout(hexboard);
     hexboard.setLayout(hexboardLayout);
     hexboardLayout.setHorizontalGroup(
@@ -158,6 +159,7 @@ public class HexGui extends javax.swing.JFrame  {
   }//
 
   private void jMenuItem4MousePressed(MouseEvent evt) {//event Undo
+    controller.undoMoveAction();
     //cofanie ruchu
   }//
 
@@ -189,6 +191,10 @@ public class HexGui extends javax.swing.JFrame  {
 
   public void redrawComponents(Game game, Board board) {
     // TODO
+  }
+  
+  public void paintHexagon(int x, int y) {
+    hexboard.paintHexagon(x,y);
   }
 
   // Variables declaration - do not modify//GEN-BEGIN:variables

@@ -23,9 +23,13 @@ public class GuiGameController extends GameController {
 
   public void placePieceAction(int xCoordinate, int yCoordinate) {
     Move move = new Move(board, currentPlayer, xCoordinate, yCoordinate);
+    System.out.println(xCoordinate + " " + yCoordinate);
     if(move.isValid()) {
       performMove(move);
       performNextMove();
+    }
+    else {
+      System.out.println("Move is invalid");
     }
   }
 
@@ -42,22 +46,32 @@ public class GuiGameController extends GameController {
     playerB = new AIPlayer(PieceType.BLACK, new RandomStrategy());
     game = new Game(size, playerA, playerB);
     board = game.getBoard();
+    currentPlayer = game.currentPlayer();
   }
 
   private void performNextMove() {
-    if(!currentPlayer.isHuman() && !game.isFinished()) {
-      performMove(currentPlayer.getMove(board));
+    System.out.println("Następny ruch");
+    if(!game.currentPlayer().isHuman() && !game.isFinished()) {
+      System.out.println("Ruch komputera");
+      performMove(game.currentPlayer().getMove(board));
+    }
+    else {
+      System.out.println("Twój ruch");
     }
   }
 
   private void performMove(Move move) {
     game.performMove(move);
+    gui.paintHexagon(move.xCoordinate, move.yCoordinate);
     redrawGuiComponents();
+    currentPlayer = game.currentPlayer();
     if(game.isFinished()) finish();
     else performNextMove();
   }
 
-  private void finish() { }
+  private void finish() {
+    System.out.println("Game finished");
+  }
 
   private void initGuiComponents() {
     HexGui.start(this);
