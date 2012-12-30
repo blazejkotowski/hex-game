@@ -22,14 +22,15 @@ public class GuiGameController extends GameController {
   }
 
   public void placePieceAction(int xCoordinate, int yCoordinate) {
+    if(game.isFinished()) return;
+
     Move move = new Move(board, currentPlayer, xCoordinate, yCoordinate);
-    System.out.println(xCoordinate + " " + yCoordinate);
+    System.err.println(String.format("HUMAN selected: %d %d", xCoordinate, yCoordinate));
     if(move.isValid()) {
       performMove(move);
-      performNextMove();
     }
     else {
-      System.out.println("Move is invalid");
+      System.err.println("Invalid move!");
     }
   }
 
@@ -51,14 +52,14 @@ public class GuiGameController extends GameController {
 
   private void performNextMove() {
     if(!game.currentPlayer().isHuman() && !game.isFinished()) {
-      System.out.println("Ruch komputera");
+      System.err.println("AI move");
       Move move = game.currentPlayer().getMove(board);
       while(!move.isValid()) move = game.currentPlayer().getMove(board);
-      System.out.println(move.xCoordinate + " " + move.yCoordinate);
+      System.err.println(String.format("AI selected: %d %d", move.xCoordinate, move.yCoordinate));
       performMove(move);
     }
     else {
-      System.out.println("Twój ruch");
+      System.err.println("HUMAN move");
     }
   }
 
@@ -72,7 +73,7 @@ public class GuiGameController extends GameController {
   }
 
   private void finish() {
-    System.out.println("Game finished");
+    System.err.println("Game finished");
   }
 
   private void initGuiComponents() {
