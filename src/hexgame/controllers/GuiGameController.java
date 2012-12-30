@@ -50,10 +50,12 @@ public class GuiGameController extends GameController {
   }
 
   private void performNextMove() {
-    System.out.println("Następny ruch");
     if(!game.currentPlayer().isHuman() && !game.isFinished()) {
       System.out.println("Ruch komputera");
-      performMove(game.currentPlayer().getMove(board));
+      Move move = game.currentPlayer().getMove(board);
+      while(!move.isValid()) move = game.currentPlayer().getMove(board);
+      System.out.println(move.xCoordinate + " " + move.yCoordinate);
+      performMove(move);
     }
     else {
       System.out.println("Twój ruch");

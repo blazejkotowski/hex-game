@@ -35,7 +35,6 @@ class Hexagon extends JPanel implements MouseListener, MouseMotionListener {
   public void mouseClicked(MouseEvent e) {
   
     hexboard.gui.controller.placePieceAction(x,y);
-    System.out.println(hexboard.gui.controller.currentPlayer.toString());
     
   }
   
