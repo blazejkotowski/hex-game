@@ -6,7 +6,7 @@ import javax.swing.*;
 import java.awt.*;
 
 class Hexboard extends JPanel {
-  public Hexagon [][] tab=new Hexagon [21][11];
+  public Hexagon [][] tab=new Hexagon [30][30];
   public HexGui gui;
   private int bx=142,by=0;
   private int size;
@@ -20,9 +20,13 @@ class Hexboard extends JPanel {
     for(int i=0;i<2*size-1;++i) {
       int bx1=bx;
       for(int j=0;j<=m;++j) {
-        Hexagon tmp=new Hexagon(15,i+1,j+1, this);
+        int row = i+1;
+        int column = j+1;
+        if(row > size) column += (row-size);
+        Hexagon tmp=new Hexagon(15, row, column, this);
         tmp.setBounds(bx1,by,26,30);
-        tab[i][j]=tmp; add(tab[i][j]);
+        tab[row][column]=tmp;
+        add(tab[row][column]);
         bx1+=26;
       }
       if(i<size-1) {
@@ -38,6 +42,6 @@ class Hexboard extends JPanel {
   }
   
   public void paintHexagon(int x, int y) {
-    tab[x-1][y-1].paintCurrentPlayer();
+    tab[x][y].paintCurrentPlayer();
   }
 }

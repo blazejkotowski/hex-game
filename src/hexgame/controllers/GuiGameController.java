@@ -14,7 +14,7 @@ public class GuiGameController extends GameController {
 
   public void start() {
     initGuiComponents();
-    startNewGame(10);
+    startNewGame(11);
   }
 
   public void startNewGameAction(int size, String pA, String pB) {
