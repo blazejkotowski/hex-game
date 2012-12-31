@@ -202,15 +202,15 @@ public class HexGui extends javax.swing.JFrame  {
   public void redrawComponents(Game game, Board board) {
     // TODO
   }
-  
+
   public void updateTitle(String title) {
     setTitle(title);
   }
-  
+
   public void paintHexagon(int x, int y) {
     hexboard.paintHexagon(x,y);
   }
-  
+
   public void clearHexagon(int x, int y) {
     hexboard.clearHexagon(x,y);
   }

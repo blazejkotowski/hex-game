@@ -36,7 +36,7 @@ public class GuiGameController extends GameController {
   public void undoMoveAction() {
     Move move = game.undoMove();
     gui.clearHexagon(move.xCoordinate, move.yCoordinate);
-    updateTitle();
+    performNextMove();
   }
 
   public void exitAction() {
@@ -45,11 +45,10 @@ public class GuiGameController extends GameController {
 
   private void startNewGame(int size) {
     playerA = new Player(PieceType.WHITE);
-//    playerB = new Player(PieceType.BLACK);
+    // playerB = new Player(PieceType.BLACK);
     playerB = new AIPlayer(PieceType.BLACK, new RandomStrategy());
     game = new Game(size, playerA, playerB);
     board = game.getBoard();
-    currentPlayer = game.currentPlayer();
     performNextMove();
   }
   
@@ -58,6 +57,7 @@ public class GuiGameController extends GameController {
   }
 
   private void performNextMove() {
+    currentPlayer = game.currentPlayer();
     updateTitle();
     if(!game.currentPlayer().isHuman() && !game.isFinished()) {
       System.err.println("AI move");
