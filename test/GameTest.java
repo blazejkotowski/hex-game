@@ -53,7 +53,7 @@ public class GameTest {
     game.performMove(new Move(game.getBoard(), playerA, 1, 1));
     game.performMove(new Move(game.getBoard(), playerB, 2, 1));
     game.performMove(new Move(game.getBoard(), playerA, 2, 2));
-    game.undoMove();
+    Move move = game.undoMove();
     assertEquals(game.getBoard().getPiece(1, 1), PieceType.WHITE);
     assertEquals(game.getBoard().getPiece(2, 1), PieceType.BLACK);
     assertEquals(game.getBoard().getPiece(2, 2), null);
@@ -61,7 +61,7 @@ public class GameTest {
 
   @Test(expected = RuntimeException.class)
   public void testUndoMoveWhenNoMoves() {
-    game.undoMove();
+    Move move = game.undoMove();
   }
 
   @Test
@@ -69,7 +69,7 @@ public class GameTest {
     game.performMove(new Move(game.getBoard(), playerA, 1, 1));
     game.performMove(new Move(game.getBoard(), playerB, 2, 1));
     game.performMove(new Move(game.getBoard(), playerA, 2, 2));
-    game.undoMove();
+    Move move = game.undoMove();
     assertEquals(game.currentPlayer(), playerA);
   }
 
