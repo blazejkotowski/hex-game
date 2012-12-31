@@ -142,6 +142,7 @@ public class HexGui extends javax.swing.JFrame  {
         });
 
         jButton4.setText("Undo");
+        jButton4.setEnabled(false);
         jButton4.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 jButton4ActionPerformed(evt);
@@ -243,7 +244,7 @@ public class HexGui extends javax.swing.JFrame  {
   }
 
   public void redrawComponents(Game game, Board board) {
-    // TODO
+    jButton4.setEnabled(game.canUndoMove());
   }
 
   public void updateTitle(String title) {

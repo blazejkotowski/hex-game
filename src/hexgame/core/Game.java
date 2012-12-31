@@ -31,6 +31,10 @@ public class Game {
     return board.isFull() || getWinner() != null;
   }
 
+  public Boolean canUndoMove() {
+    return !isFinished() && !moves.isEmpty();
+  }
+
   public Player getWinner() {
     if(board.bridgeExists(playerA.getPieceType()))
       return playerA;

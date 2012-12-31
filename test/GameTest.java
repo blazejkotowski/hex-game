@@ -79,6 +79,29 @@ public class GameTest {
   }
 
   @Test
+  public void cannotUndoIfNoMoves() {
+    assertFalse(game.canUndoMove());
+  }
+
+  @Test
+  public void canUndoAnyMoves() {
+    game.performMove(new Move(game.getBoard(), playerA, 1, 1));
+    assertTrue(game.canUndoMove());
+  }
+
+  @Test
+  public void cannotUndoIfFinished() {
+    game.performMove(new Move(game.getBoard(), playerA, 3, 1));
+    game.performMove(new Move(game.getBoard(), playerB, 1, 1));
+    game.performMove(new Move(game.getBoard(), playerA, 3, 2));
+    game.performMove(new Move(game.getBoard(), playerB, 4, 2));
+    game.performMove(new Move(game.getBoard(), playerA, 4, 3));
+    game.performMove(new Move(game.getBoard(), playerB, 5, 3));
+    game.performMove(new Move(game.getBoard(), playerA, 5, 4));
+    assertFalse(game.canUndoMove());
+  }
+
+  @Test
   public void testIsFinishedWhenBoardIsFull() {
     game.performMove(new Move(game.getBoard(), playerA, 1, 1));
     game.performMove(new Move(game.getBoard(), playerB, 2, 1));
