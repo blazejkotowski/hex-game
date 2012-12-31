@@ -24,12 +24,12 @@ public class GuiGameController extends GameController {
     if(game.isFinished()) return;
 
     Move move = new Move(board, currentPlayer, xCoordinate, yCoordinate);
-    System.err.println(String.format("HUMAN selected: %d %d", xCoordinate, yCoordinate));
+    debug(String.format("HUMAN selected: %d %d", xCoordinate, yCoordinate));
     if(move.isValid()) {
       performMove(move);
     }
     else {
-      System.err.println("Invalid move!");
+      debug("Invalid move!");
     }
   }
 
@@ -60,14 +60,14 @@ public class GuiGameController extends GameController {
     currentPlayer = game.currentPlayer();
     updateTitle();
     if(!game.currentPlayer().isHuman() && !game.isFinished()) {
-      System.err.println("AI move");
+      debug("AI move");
       Move move = game.currentPlayer().getMove(board);
       while(!move.isValid()) move = game.currentPlayer().getMove(board);
-      System.err.println(String.format("AI selected: %d %d", move.xCoordinate, move.yCoordinate));
+      debug(String.format("AI selected: %d %d", move.xCoordinate, move.yCoordinate));
       performMove(move);
     }
     else {
-      System.err.println("HUMAN move");
+      debug("HUMAN move");
     }
   }
 
@@ -81,9 +81,9 @@ public class GuiGameController extends GameController {
   }
 
   private void finish() {
-    System.err.println("Game finished.");
-    if(game.getWinner() == null) System.err.println("It's a draw.");
-    else System.err.println(game.getWinner().getPieceType() + " won.");
+    debug("Game finished.");
+    if(game.getWinner() == null) debug("It's a draw.");
+    else debug(game.getWinner().getPieceType() + " won.");
   }
 
   private void initGuiComponents() {
@@ -92,5 +92,9 @@ public class GuiGameController extends GameController {
 
   private void redrawGuiComponents() {
     gui.redrawComponents(game, board);
+  }
+
+  private void debug(String msg) {
+    System.err.println(msg);
   }
 }
