@@ -154,7 +154,7 @@ public class HexGui extends javax.swing.JFrame  {
     setCursor(new java.awt.Cursor(java.awt.Cursor.DEFAULT_CURSOR));
 
     jFrame1.pack(); // New Game
-    		jFrame1.setVisible(true);
+    jFrame1.setVisible(false);
     
     pack();
   }// </editor-fold>//GEN-END:initComponents
@@ -169,8 +169,8 @@ public class HexGui extends javax.swing.JFrame  {
   }//
 
 	private void jButton4ActionPerformed(java.awt.event.ActionEvent evt) {
-        	jFrame1.pack(); // New Game
-    		jFrame1.setVisible(true); 
+      jFrame1.pack(); // New Game
+      jFrame1.setVisible(true);
     }
 
     private void jButton2ActionPerformed(java.awt.event.ActionEvent evt) {
