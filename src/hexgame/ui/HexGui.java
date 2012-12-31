@@ -153,6 +153,9 @@ public class HexGui extends javax.swing.JFrame  {
     setTitle("Hex Game");
     setCursor(new java.awt.Cursor(java.awt.Cursor.DEFAULT_CURSOR));
 
+    jFrame1.pack(); // New Game
+    		jFrame1.setVisible(true);
+    
     pack();
   }// </editor-fold>//GEN-END:initComponents
 
