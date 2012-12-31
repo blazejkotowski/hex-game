@@ -208,9 +208,9 @@ public class HexGui extends javax.swing.JFrame  {
     if(hexboard != null) hexboard.setVisible(false);
     SpinnerNumberModel model = (SpinnerNumberModel)jSpinner1.getModel();
     int size = model.getNumber().intValue();
-    controller.startNewGameAction(size, "playerA", "playerB");
     initHexboard(size);
     jFrame1.setVisible(false);
+    controller.startNewGameAction(size, "playerA", "playerB");
   }//
 
   private void jButton4ActionPerformed(java.awt.event.ActionEvent evt) {
