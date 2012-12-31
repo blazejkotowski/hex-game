@@ -247,6 +247,10 @@ public class HexGui extends javax.swing.JFrame  {
     jButton4.setEnabled(game.canUndoMove());
   }
 
+  public void alert(String msg) {
+    JOptionPane.showMessageDialog(null, msg);
+  }
+
   public void updateTitle(String title) {
     setTitle(title);
   }

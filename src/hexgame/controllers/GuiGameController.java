@@ -81,9 +81,11 @@ public class GuiGameController extends GameController {
   }
 
   private void finish() {
-    debug("Game finished.");
-    if(game.getWinner() == null) debug("It's a draw.");
-    else debug(game.getWinner().getPieceType() + " won.");
+    String msg = "Game finished.";
+    if(game.getWinner() == null) msg += "It's a draw.";
+    else msg += game.getWinner().getPieceType() + " won.";
+    debug(msg);
+    gui.alert(msg);
   }
 
   private void initGuiComponents() {
