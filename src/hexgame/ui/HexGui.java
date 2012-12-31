@@ -203,6 +203,10 @@ public class HexGui extends javax.swing.JFrame  {
     // TODO
   }
   
+  public void updateTitle(String title) {
+    setTitle(title);
+  }
+  
   public void paintHexagon(int x, int y) {
     hexboard.paintHexagon(x,y);
   }
