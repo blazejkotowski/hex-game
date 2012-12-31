@@ -54,7 +54,7 @@ public class HexGui extends javax.swing.JFrame  {
 
         jFrame1 = new javax.swing.JFrame();
         jButton1 = new javax.swing.JButton();
-        jSpinner1 = new javax.swing.JSpinner();
+        jSpinner1 = new javax.swing.JSpinner(new SpinnerNumberModel(10, 4, 15, 1));
         jLabel1 = new javax.swing.JLabel();
         jDialog1 = new javax.swing.JDialog();
         jButton2 = new javax.swing.JButton();
