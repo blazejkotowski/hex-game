@@ -10,7 +10,6 @@ public class GuiGameController extends GameController {
 
   public void setGui(HexGui _gui) {
     gui = _gui;
-    startNewGame(11);
   }
 
   public void start() {
