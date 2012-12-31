@@ -9,3 +9,6 @@ private/*
 *.jar
 *.war
 *.ear
+
+# temprorary
+*~
