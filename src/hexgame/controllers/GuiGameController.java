@@ -35,7 +35,8 @@ public class GuiGameController extends GameController {
   }
 
   public void undoMoveAction() {
-    game.undoMove();
+    Move move = game.undoMove();
+    gui.clearHexagon(move.xCoordinate, move.yCoordinate);
   }
 
   public void exitAction() {

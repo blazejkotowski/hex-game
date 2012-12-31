@@ -203,6 +203,10 @@ public class HexGui extends javax.swing.JFrame  {
   public void paintHexagon(int x, int y) {
     hexboard.paintHexagon(x,y);
   }
+  
+  public void clearHexagon(int x, int y) {
+    hexboard.clearHexagon(x,y);
+  }
 
   // Variables declaration - do not modify//GEN-BEGIN:variables
 	private javax.swing.JButton jButton4;

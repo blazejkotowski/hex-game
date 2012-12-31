@@ -52,9 +52,11 @@ public class Game {
     moves.add(move);
   }
 
-  public void undoMove() {
+  public Move undoMove() {
     assertAnyMoves();
-    moves.remove(moves.size() - 1).undo();
+    Move move = moves.remove(moves.size() - 1);
+    move.undo();
+    return move;
   }
 
   private void assertAnyMoves() {

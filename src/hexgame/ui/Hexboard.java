@@ -44,4 +44,8 @@ class Hexboard extends JPanel {
   public void paintHexagon(int x, int y) {
     tab[x][y].paintCurrentPlayer();
   }
+  
+  public void clearHexagon(int x, int y) {
+    tab[x][y].clearHexagon();
+  }
 }

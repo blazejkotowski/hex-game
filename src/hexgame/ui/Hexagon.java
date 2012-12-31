@@ -39,15 +39,15 @@ class Hexagon extends JPanel implements MouseListener, MouseMotionListener {
   }
   
   public void paintCurrentPlayer() {
-    if(hexboard.gui.controller.currentPlayer.toString() == "WHITE") {
+    if(hexboard.gui.controller.currentPlayer.toString() == "WHITE")
       c=Color.white;
-      B=false;
-    }
-    else {
+    else
       c=Color.black;
-      B=true;
-    }
-    
+    this.paintComponent(this.getGraphics());
+  }
+  
+  public void clearHexagon() {
+    c = Color.gray;
     this.paintComponent(this.getGraphics());
   }
 
