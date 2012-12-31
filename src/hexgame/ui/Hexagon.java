@@ -2,6 +2,7 @@ package org.hexgame.ui;
 
 import org.hexgame.ui.Hexboard;
 import org.hexgame.core.Move;
+import org.hexgame.core.PieceType;
 import javax.swing.*;
 import java.awt.geom.*;
 import java.awt.*;
@@ -39,7 +40,7 @@ class Hexagon extends JPanel implements MouseListener, MouseMotionListener {
   }
   
   public void paintCurrentPlayer() {
-    if(hexboard.gui.controller.currentPlayer.toString() == "WHITE")
+    if(hexboard.gui.controller.currentPlayer.getPieceType() == PieceType.WHITE)
       c=Color.white;
     else
       c=Color.black;

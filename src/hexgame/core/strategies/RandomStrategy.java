@@ -11,4 +11,8 @@ public class RandomStrategy extends Strategy {
     List<Field> free = freeFields(board);
     return free.get((new Random()).nextInt(free.size()));
   }
+
+  public String toString() {
+    return "Random Strategy";
+  }
 }

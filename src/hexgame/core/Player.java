@@ -14,7 +14,7 @@ public class Player {
   }
 
   public String toString() {
-    return pieceType.toString();
+    return pieceType.toString() + " [ HUMAN ]";
   }
 
   public Boolean isHuman() {

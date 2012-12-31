@@ -53,7 +53,7 @@ public class GuiGameController extends GameController {
   }
   
   private void updateTitle() {
-    gui.updateTitle(String.format("%s's turn | Hex", game.currentPlayer().toString()));
+    gui.updateTitle(String.format("%s's turn | Hex", currentPlayer.toString()));
   }
 
   private void performNextMove() {
@@ -81,10 +81,11 @@ public class GuiGameController extends GameController {
   }
 
   private void finish() {
-    String msg = "Game finished.";
+    String msg = "Game finished. ";
     if(game.getWinner() == null) msg += "It's a draw.";
-    else msg += game.getWinner().getPieceType() + " won.";
+    else msg += game.getWinner().toString() + " won.";
     debug(msg);
+    gui.updateTitle(msg);
     gui.alert(msg);
   }
 

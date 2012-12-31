@@ -22,4 +22,8 @@ public class AIPlayer extends Player {
   public Boolean isHuman() {
     return false;
   }
+
+  public String toString() {
+    return String.format("%s [ %s ]", pieceType.toString(), strategy.toString());
+  }
 }
