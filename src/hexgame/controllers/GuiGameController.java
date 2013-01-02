@@ -16,8 +16,8 @@ public class GuiGameController extends GameController {
     initGuiComponents();
   }
 
-  public void startNewGameAction(int size, String pA, String pB) {
-    startNewGame(size);
+  public void startNewGameAction(int size, Boolean pA, Boolean pB) {
+    startNewGame(size, pA, pB);
   }
 
   public void placePieceAction(int xCoordinate, int yCoordinate) {
@@ -43,12 +43,12 @@ public class GuiGameController extends GameController {
     System.exit(0);
   }
 
-  private void startNewGame(int size) {
+  private void startNewGame(int size, Boolean pA, Boolean pB) {
     playerA = new Player(PieceType.WHITE);
-	if(gui.jRadioButton1.isSelected())
-    		playerB = new Player(PieceType.BLACK);
-	else
-    		playerB = new AIPlayer(PieceType.BLACK, new RandomStrategy());
+    if(pB)
+      playerB = new Player(PieceType.BLACK);
+    else
+      playerB = new AIPlayer(PieceType.BLACK, new RandomStrategy());
     game = new Game(size, playerA, playerB);
     board = game.getBoard();
     performNextMove();
