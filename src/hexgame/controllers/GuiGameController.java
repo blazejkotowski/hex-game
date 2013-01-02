@@ -45,8 +45,10 @@ public class GuiGameController extends GameController {
 
   private void startNewGame(int size) {
     playerA = new Player(PieceType.WHITE);
-    // playerB = new Player(PieceType.BLACK);
-    playerB = new AIPlayer(PieceType.BLACK, new RandomStrategy());
+	if(gui.jRadioButton1.isSelected())
+    		playerB = new Player(PieceType.BLACK);
+	else
+    		playerB = new AIPlayer(PieceType.BLACK, new RandomStrategy());
     game = new Game(size, playerA, playerB);
     board = game.getBoard();
     performNextMove();
