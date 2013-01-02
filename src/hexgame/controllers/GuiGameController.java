@@ -17,7 +17,14 @@ public class GuiGameController extends GameController {
   }
 
   public void startNewGameAction(int size, Boolean pA, Boolean pB) {
-    startNewGame(size, pA, pB);
+    playerA = new Player(PieceType.WHITE);
+    if(pB)
+      playerB = new Player(PieceType.BLACK);
+    else
+      playerB = new AIPlayer(PieceType.BLACK, new RandomStrategy());
+    game = new Game(size, playerA, playerB);
+    board = game.getBoard();
+    performNextMove();
   }
 
   public void placePieceAction(int xCoordinate, int yCoordinate) {
@@ -43,17 +50,6 @@ public class GuiGameController extends GameController {
     System.exit(0);
   }
 
-  private void startNewGame(int size, Boolean pA, Boolean pB) {
-    playerA = new Player(PieceType.WHITE);
-    if(pB)
-      playerB = new Player(PieceType.BLACK);
-    else
-      playerB = new AIPlayer(PieceType.BLACK, new RandomStrategy());
-    game = new Game(size, playerA, playerB);
-    board = game.getBoard();
-    performNextMove();
-  }
-  
   private void updateTitle() {
     gui.updateTitle(String.format("%s's turn | Hex", currentPlayer.toString()));
   }
