@@ -1,8 +1,13 @@
 package org.hexgame.controllers;
 
+import java.io.File;
+import java.net.URL;
+import java.net.URLClassLoader;
+import java.net.MalformedURLException;
+
 import org.hexgame.controllers.GameController;
 import org.hexgame.core.*;
-import org.hexgame.core.strategies.RandomStrategy;
+import org.hexgame.core.strategies.Strategy;
 import org.hexgame.ui.*;
 
 public class GuiGameController extends GameController {
@@ -17,11 +22,8 @@ public class GuiGameController extends GameController {
   }
 
   public void startNewGameAction(int size, String pA, String pB) {
-    playerA = new Player(PieceType.WHITE);
-    if(pB == "HUMAN")
-      playerB = new Player(PieceType.BLACK);
-    else
-      playerB = new AIPlayer(PieceType.BLACK, new RandomStrategy());
+    playerA = constructPlayer(pA, PieceType.WHITE);
+    playerB = constructPlayer(pB, PieceType.BLACK);
     game = new Game(size, playerA, playerB);
     board = game.getBoard();
     performNextMove();
@@ -93,6 +95,27 @@ public class GuiGameController extends GameController {
 
   private void redrawGuiComponents() {
     gui.redrawComponents(game, board);
+  }
+
+  private Player constructPlayer(String type, PieceType pieceType) {
+    Player player = null;
+    if(type == "HUMAN") {
+      player = new Player(pieceType);
+    }
+    else {
+      try {
+        File strategyJar = new File("strategies", type + ".jar");
+        URLClassLoader strategyLoader = new URLClassLoader(new URL[]{strategyJar.toURI().toURL()});
+        Class strategyClass = strategyLoader.loadClass("org.hexgame.core.strategies." + type);
+        Strategy strategy = (Strategy) strategyClass.newInstance();
+        player = new AIPlayer(pieceType, strategy);
+      } catch (MalformedURLException ex) {
+      } catch (ClassNotFoundException ex) {
+      } catch (InstantiationException ex) {
+      } catch (IllegalAccessException ex) {
+      }
+    }
+    return player;
   }
 
   private void debug(String msg) {

@@ -33,7 +33,7 @@
     <mkdir dir="${jar.dir}"/>
     <jar destfile="${jar.dir}/strategies/${strategy}.jar" basedir="${classes.dir}">
       <manifest>
-        <attribute name="Main-Class" value="RandomStrategy"/>
+        <attribute name="Main-Class" value="${strategy}"/>
       </manifest>
     </jar>
   </target>
