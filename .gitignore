@@ -4,6 +4,9 @@ private.xml
 private.properties
 private/*
 *.class
+src/hexgame/core/strategies/*.java
+-src/hexgame/core/strategies/RandomStrategy.java
+-src/hexgame/core/strategies/Strategy.java
 
 # Package Files #
 *.jar
