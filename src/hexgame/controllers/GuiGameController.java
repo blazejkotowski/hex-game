@@ -16,9 +16,9 @@ public class GuiGameController extends GameController {
     initGuiComponents();
   }
 
-  public void startNewGameAction(int size, Boolean pA, Boolean pB) {
+  public void startNewGameAction(int size, String pA, String pB) {
     playerA = new Player(PieceType.WHITE);
-    if(pB)
+    if(pB == "HUMAN")
       playerB = new Player(PieceType.BLACK);
     else
       playerB = new AIPlayer(PieceType.BLACK, new RandomStrategy());

@@ -237,7 +237,7 @@ public class HexGui extends javax.swing.JFrame  {
     int size = model.getNumber().intValue();
     initHexboard(size);
     jFrame1.setVisible(false);
-    controller.startNewGameAction(size, true, jRadioButton1.isSelected());
+    controller.startNewGameAction(size, "HUMAN", jRadioButton1.isSelected() ? "HUMAN" : "RandomStrategy");
   }//
 
   private void jButton4ActionPerformed(java.awt.event.ActionEvent evt) {
