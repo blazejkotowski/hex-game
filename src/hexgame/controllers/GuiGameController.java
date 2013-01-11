@@ -110,9 +110,13 @@ public class GuiGameController extends GameController {
         Strategy strategy = (Strategy) strategyClass.newInstance();
         player = new AIPlayer(pieceType, strategy);
       } catch (MalformedURLException ex) {
+        System.err.println(ex);
       } catch (ClassNotFoundException ex) {
+        System.err.println(ex);
       } catch (InstantiationException ex) {
+        System.err.println(ex);
       } catch (IllegalAccessException ex) {
+        System.err.println(ex);
       }
     }
     return player;
