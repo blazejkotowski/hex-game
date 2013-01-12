@@ -1,12 +1,15 @@
 package org.hexgame;
 
 import org.hexgame.controllers.*;
-import java.util.Arrays;
+import java.util.Scanner;
 
 public class Main {
   public static void main(String[] args) {
     GameController gameController;
-    if(Arrays.asList(args).contains("-text")) gameController = new TextGameController();
+    System.out.println("[1]: tryb tekstowy\n[2]: tryb graficzny");
+    Scanner sc = new Scanner(System.in);
+    int i = sc.nextInt();
+    if(i == 1) gameController = new TextGameController();
     else gameController = new GuiGameController();
     gameController.start();
   }

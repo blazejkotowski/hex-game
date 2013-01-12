@@ -1,16 +1,9 @@
 package org.hexgame.controllers;
 
-import java.io.File;
-import java.net.URL;
-import java.net.URLClassLoader;
-import java.net.URLDecoder;
-import java.net.MalformedURLException;
-
 import org.hexgame.controllers.GameController;
 import org.hexgame.core.*;
-import org.hexgame.core.strategies.Strategy;
+import org.hexgame.core.strategies.RandomStrategy;
 import org.hexgame.ui.*;
-import org.hexgame.Main;
 
 public class GuiGameController extends GameController {
   HexGui gui;
@@ -23,9 +16,12 @@ public class GuiGameController extends GameController {
     initGuiComponents();
   }
 
-  public void startNewGameAction(int size, String pA, String pB) {
-    playerA = constructPlayer(pA, PieceType.WHITE);
-    playerB = constructPlayer(pB, PieceType.BLACK);
+  public void startNewGameAction(int size, Boolean pA, Boolean pB) {
+    playerA = new Player(PieceType.WHITE);
+    if(pB)
+      playerB = new Player(PieceType.BLACK);
+    else
+      playerB = new AIPlayer(PieceType.BLACK, new RandomStrategy());
     game = new Game(size, playerA, playerB);
     board = game.getBoard();
     performNextMove();
@@ -97,44 +93,6 @@ public class GuiGameController extends GameController {
 
   private void redrawGuiComponents() {
     gui.redrawComponents(game, board);
-  }
-
-  private Player constructPlayer(String type, PieceType pieceType) {
-    Player player = null;
-    if(type == "HUMAN") {
-      player = new Player(pieceType);
-    }
-    else {
-      try {
-        File strategyJar = new File(strategiesPath(), type + ".jar");
-        URLClassLoader strategyLoader = new URLClassLoader(new URL[]{strategyJar.toURI().toURL()});
-        Class strategyClass = strategyLoader.loadClass("org.hexgame.core.strategies." + type);
-        Strategy strategy = (Strategy) strategyClass.newInstance();
-        player = new AIPlayer(pieceType, strategy);
-      } catch (MalformedURLException ex) {
-        System.err.println(ex);
-      } catch (ClassNotFoundException ex) {
-        System.err.println(ex);
-      } catch (InstantiationException ex) {
-        System.err.println(ex);
-      } catch (IllegalAccessException ex) {
-        System.err.println(ex);
-      }
-    }
-    return player;
-  }
-
-  private String strategiesPath() {
-    String path = "";
-    try {
-      path = Main.class.getProtectionDomain().getCodeSource().getLocation().getPath();
-      path = URLDecoder.decode(path, "UTF-8");
-      path = new File(path).getParent();
-    }
-    catch(java.io.UnsupportedEncodingException ex) {
-      path = "";
-    }
-    return new File(path, "strategies").getPath();
   }
 
   private void debug(String msg) {
