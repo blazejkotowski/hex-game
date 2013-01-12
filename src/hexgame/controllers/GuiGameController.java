@@ -3,12 +3,14 @@ package org.hexgame.controllers;
 import java.io.File;
 import java.net.URL;
 import java.net.URLClassLoader;
+import java.net.URLDecoder;
 import java.net.MalformedURLException;
 
 import org.hexgame.controllers.GameController;
 import org.hexgame.core.*;
 import org.hexgame.core.strategies.Strategy;
 import org.hexgame.ui.*;
+import org.hexgame.Main;
 
 public class GuiGameController extends GameController {
   HexGui gui;
@@ -104,7 +106,7 @@ public class GuiGameController extends GameController {
     }
     else {
       try {
-        File strategyJar = new File("strategies", type + ".jar");
+        File strategyJar = new File(strategiesPath(), type + ".jar");
         URLClassLoader strategyLoader = new URLClassLoader(new URL[]{strategyJar.toURI().toURL()});
         Class strategyClass = strategyLoader.loadClass("org.hexgame.core.strategies." + type);
         Strategy strategy = (Strategy) strategyClass.newInstance();
@@ -120,6 +122,19 @@ public class GuiGameController extends GameController {
       }
     }
     return player;
+  }
+
+  private String strategiesPath() {
+    String path = "";
+    try {
+      path = Main.class.getProtectionDomain().getCodeSource().getLocation().getPath();
+      path = URLDecoder.decode(path, "UTF-8");
+      path = new File(path).getParent();
+    }
+    catch(java.io.UnsupportedEncodingException ex) {
+      path = "";
+    }
+    return new File(path, "strategies").getPath();
   }
 
   private void debug(String msg) {
