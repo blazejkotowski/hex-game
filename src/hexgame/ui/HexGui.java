@@ -86,6 +86,8 @@ public class HexGui extends javax.swing.JFrame  {
 	jComboBox2.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "Human", "Random AI", "Select AI" }));
 
         jLabel1.setText("size of map");
+	jLabel2.setText("White");
+	jLabel3.setText("Black");
 
         javax.swing.GroupLayout jFrame1Layout = new javax.swing.GroupLayout(jFrame1.getContentPane());
         jFrame1.getContentPane().setLayout(jFrame1Layout);
