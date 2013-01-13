@@ -4,6 +4,7 @@ import org.hexgame.core.*;
 import org.hexgame.controllers.GuiGameController;
 import javax.swing.*;
 import java.awt.event.*;
+import java.io.File;
 
 public class HexGui extends javax.swing.JFrame  {
   GuiGameController controller;
@@ -14,6 +15,8 @@ public class HexGui extends javax.swing.JFrame  {
     controller.setGui(this);
     initComponents();
   }
+
+
  
   private void initHexboard(int size){
 
@@ -81,13 +84,32 @@ public class HexGui extends javax.swing.JFrame  {
             }
         });
 
-	jComboBox1.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "Human", "Random AI", "Select AI" }));
+	// LISTOWANIE KATALOGU STRATEGIES //
+	String path = controller.strategiesPath();
+	File folder = new File(path);
+	if(folder.exists()){
+		File[] listOfFiles = folder.listFiles();
+		int l = listOfFiles.length; 
+		String[] files ;  files = new String[l+2];
+		files[0] = "Human";
+		files[1] = "Random AI";
+		for(int i = 2; i < l+2; i++)
+			if(listOfFiles[i].isFile())
+				files[i] = listOfFiles[i].getName();
 
-	jComboBox2.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "Human", "Random AI", "Select AI" }));
+		jComboBox1.setModel(new javax.swing.DefaultComboBoxModel(files));
 
+		jComboBox2.setModel(new javax.swing.DefaultComboBoxModel(files));
+	}
+	else{
+		jComboBox1.setModel(new javax.swing.DefaultComboBoxModel(new String[]{"Human", "Random AI"}));
+
+		jComboBox2.setModel(new javax.swing.DefaultComboBoxModel(new String[]{"Human", "Random AI"}));
+	}
         jLabel1.setText("size of map");
 	jLabel2.setText("White");
 	jLabel3.setText("Black");
+	
 
         javax.swing.GroupLayout jFrame1Layout = new javax.swing.GroupLayout(jFrame1.getContentPane());
         jFrame1.getContentPane().setLayout(jFrame1Layout);
