@@ -29,11 +29,16 @@
     </jar>
   </target>
 
-  <target name="strategies" depends="compile">
-    <mkdir dir="${jar.dir}"/>
+  <target name="strategies" depends="jar">
     <jar destfile="${jar.dir}/strategies/RandomStrategy.jar" basedir="${classes.dir}">
       <manifest>
         <attribute name="Main-Class" value="RandomStrategy"/>
+      </manifest>
+    </jar>
+    <javac srcdir="strategy" destdir="${classes.dir}" includeantruntime="false" classpathref="classpath"/>
+    <jar destfile="${jar.dir}/strategies/${strategy}.jar" basedir="${classes.dir}">
+      <manifest>
+        <attribute name="Main-Class" value="${strategy}"/>
       </manifest>
     </jar>
   </target>
