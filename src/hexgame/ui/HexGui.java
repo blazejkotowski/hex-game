@@ -89,27 +89,27 @@ public class HexGui extends javax.swing.JFrame  {
 	File folder = new File(path);
 	if(folder.exists()){
 		File[] listOfFiles = folder.listFiles();
-		int l = listOfFiles.length; 
+		int l = listOfFiles.length;
 		String[] files ;  files = new String[l+2];
-		files[0] = "Human";
-		files[1] = "Random AI";
-		for(int i = 2; i < l+2; i++)
-			if(listOfFiles[i].isFile())
-				files[i] = listOfFiles[i].getName();
+		files[0] = "HUMAN";
+		files[1] = "RandomStrategy";
+		for(int i = 0; i < l; i++)
+			if(listOfFiles[i].isFile()) {
+				files[i+2] = listOfFiles[i].getName().replaceAll(".jar$", "");
+      }
 
 		jComboBox1.setModel(new javax.swing.DefaultComboBoxModel(files));
 
 		jComboBox2.setModel(new javax.swing.DefaultComboBoxModel(files));
 	}
 	else{
-		jComboBox1.setModel(new javax.swing.DefaultComboBoxModel(new String[]{"Human", "RandomStrategy"}));
+		jComboBox1.setModel(new javax.swing.DefaultComboBoxModel(new String[]{"HUMAN", "RandomStrategy"}));
 
-		jComboBox2.setModel(new javax.swing.DefaultComboBoxModel(new String[]{"Human", "RandomStrategy"}));
+		jComboBox2.setModel(new javax.swing.DefaultComboBoxModel(new String[]{"HUMAN", "RandomStrategy"}));
 	}
         jLabel1.setText("size of map");
 	jLabel2.setText("White");
 	jLabel3.setText("Black");
-	
 
         javax.swing.GroupLayout jFrame1Layout = new javax.swing.GroupLayout(jFrame1.getContentPane());
         jFrame1.getContentPane().setLayout(jFrame1Layout);

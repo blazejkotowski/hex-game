@@ -124,7 +124,7 @@ public class GuiGameController extends GameController {
     return player;
   }
 
-  private String strategiesPath() {
+  public String strategiesPath() {
     String path = "";
     try {
       path = Main.class.getProtectionDomain().getCodeSource().getLocation().getPath();
