@@ -102,9 +102,9 @@ public class HexGui extends javax.swing.JFrame  {
 		jComboBox2.setModel(new javax.swing.DefaultComboBoxModel(files));
 	}
 	else{
-		jComboBox1.setModel(new javax.swing.DefaultComboBoxModel(new String[]{"Human", "Random AI"}));
+		jComboBox1.setModel(new javax.swing.DefaultComboBoxModel(new String[]{"Human", "RandomStrategy"}));
 
-		jComboBox2.setModel(new javax.swing.DefaultComboBoxModel(new String[]{"Human", "Random AI"}));
+		jComboBox2.setModel(new javax.swing.DefaultComboBoxModel(new String[]{"Human", "RandomStrategy"}));
 	}
         jLabel1.setText("size of map");
 	jLabel2.setText("White");
@@ -255,7 +255,9 @@ public class HexGui extends javax.swing.JFrame  {
     int size = model.getNumber().intValue();
     initHexboard(size);
     jFrame1.setVisible(false);
-    //controller.startNewGameAction(size, true, jRadioButton1.isSelected());
+	String strategy1 = (String)jComboBox1.getSelectedItem();
+	String strategy2 = (String)jComboBox2.getSelectedItem();
+    controller.startNewGameAction(size, strategy1, strategy2);
   }//
 
   private void jButton4ActionPerformed(java.awt.event.ActionEvent evt) {
