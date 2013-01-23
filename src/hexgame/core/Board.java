@@ -85,7 +85,7 @@ public class Board {
     return result;
   }
 
-  private Set<Field> fieldSet(PieceType pieceType) {
+  public Set<Field> fieldSet(PieceType pieceType) {
     Set<Field> result = new HashSet<Field>();
     for(int i = 1; i < size * 2; i++) {
       for(int l = 1; l <= size; l++) {
